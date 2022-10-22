@@ -1,3 +1,4 @@
 # Postgres local folder
 data/
 .idea/
+client/package-lock.json
