@@ -10,6 +10,9 @@ done;
 echo "Applying database migrations"
 poetry run python manage.py migrate
 
+echo "Starting cron jobs"
+poetry run python manage.py runcrons
+
 # Start server
 echo "Starting server"
 poetry run python manage.py runserver 0.0.0.0:8000

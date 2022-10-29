@@ -9,5 +9,7 @@
 * Install dependencies for frontend ```make dev-install``` 
 * Start the frontend server ```make dev```
 
+### If you need to run something, check Makefile first, most of the things are already there
+
 ### Backend is on ```http://localhost:8000/```
 ### Frontend is on ```http://localhost:4000/```
