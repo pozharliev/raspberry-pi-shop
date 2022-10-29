@@ -9,6 +9,8 @@ python = "^3.10"
 djangorestframework = "^3.14.0"
 Django = "^4.1.2"
 psycopg2 = "^2.9.4"
+django-cron = "^0.6.0"
+Scrapy = "^2.7.0"
 
 [tool.poetry.dev-dependencies]
 

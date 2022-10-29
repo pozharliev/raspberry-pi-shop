@@ -4,3 +4,5 @@ dev-install:
 dev:
 	cd client && npm run dev
 
+migrate:
+	

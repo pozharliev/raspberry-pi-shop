@@ -6,5 +6,5 @@ WORKDIR /code/
 COPY . /code/
 WORKDIR /code/server
 RUN pip install poetry
-RUN poetry export --without-hashes --format=requirements.txt > requirements.txt
-RUN pip install -r requirements.txt
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-interaction --no-ansi
