@@ -2,3 +2,4 @@
 data/
 .idea/
 client/package-lock.json
+server/__pycache__
