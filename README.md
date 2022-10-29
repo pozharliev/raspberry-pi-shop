@@ -2,7 +2,7 @@
 ## Development on Pycharm
 ### https://www.jetbrains.com/help/pycharm/using-docker-as-a-remote-interpreter.html
 
-#Installation
+# Installation
 ## With docker
 * Install docker locally
 * Run the backend and db containers ```docker-compose up -d```
