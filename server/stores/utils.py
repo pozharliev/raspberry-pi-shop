@@ -15,3 +15,11 @@ class CrawlableSite:
 
 
 Erelement = CrawlableSite('erelement', 'erelement.com', ['erelement.com'], ['https://erelement.com/raspberry-pi-4'])
+
+
+def get_stores():
+    pass
+
+
+def get_store(name: str):
+    pass

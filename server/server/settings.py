@@ -38,13 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'server',
     'rest_framework',
-    'django_cron'
+    'django_cron',
+    'server',
+    'components',
+    'crawl',
+    'stores'
 ]
 
 CRON_CLASSES = [
     'server.crons.RunCrawlersJob'
+]
+
+FIXTURE_DIRS = [
+    'server/fixtures'
 ]
 
 MIDDLEWARE = [

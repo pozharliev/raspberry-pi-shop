@@ -1,8 +1,9 @@
 from typing import Iterator, List
 import scrapy
 from scrapy.http import Response, Request
-from ..crawlable import Erelement
 from w3lib.html import remove_tags
+
+from server.stores.utils import Erelement
 
 
 class ErelementSpider(scrapy.spiders.CrawlSpider):

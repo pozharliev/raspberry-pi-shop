@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CrawlersConfig(AppConfig):
+class StoresConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'crawl'
+    name = 'stores'

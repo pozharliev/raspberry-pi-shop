@@ -1,0 +1,12 @@
+[
+  {
+    "model": "stores.store",
+    "pk": 1,
+    "fields": {
+      "store_name": "erelement",
+      "domain_name": "erelement.com",
+      "allowed_domains": "[\"erelement.com\"]",
+      "start_urls": "[\"https://erelement.com/raspberry-pi-4\"]"
+    }
+  }
+]
