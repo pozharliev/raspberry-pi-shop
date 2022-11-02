@@ -3,7 +3,10 @@ import scrapy
 from scrapy.http import Response, Request
 from w3lib.html import remove_tags
 
-from server.stores.utils import Erelement
+# Don't ask...
+import sys
+sys.path.append("..")
+from stores.utils import Erelement
 
 
 class ErelementSpider(scrapy.spiders.CrawlSpider):
