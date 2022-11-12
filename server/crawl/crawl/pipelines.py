@@ -1,13 +1,46 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+from typing import TypedDict
 
+from asgiref.sync import sync_to_async
 
-# useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
+from .items import ComponentItem
+
+import sys
+sys.path.append("..")
+from components.models import Categories
+from stores.models import Store
+
+ComponentType = TypedDict('ComponentType', {
+    "name": str,
+    "description": str,
+    "price": float,
+    "category": str,
+    "image": str,
+    "url": str
+})
 
 
 class CrawlPipeline:
-    def process_item(self, item, spider):
-        return item
+
+    @sync_to_async
+    def get_category(self, category):
+        return Categories.objects.get(name=category)
+
+    @sync_to_async
+    def get_store(self, store):
+        return Store.objects.get(store_name=store)
+
+    async def process_item(self, item: ComponentType, spider):
+        component = ComponentItem(
+            name=item['name'],
+            description=item['description'],
+            price=float(item['price']),
+            category=await self.get_category(item['category']),
+            image=item['image'],
+            url=item['url'],
+            store=await self.get_store(spider.name)
+        )
+
+        await sync_to_async(component.save)()
+
+        return component
+

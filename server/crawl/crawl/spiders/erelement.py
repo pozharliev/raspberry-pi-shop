@@ -2,7 +2,6 @@ from typing import Iterator, List
 import scrapy
 from scrapy.http import Response, Request
 from w3lib.html import remove_tags
-
 # Don't ask...
 import sys
 sys.path.append("..")
@@ -106,3 +105,14 @@ class ErelementSpider(scrapy.spiders.CrawlSpider):
         category = response.url.replace('https://erelement.com/', '').rsplit('/')[0].rsplit('?')[0]
         image = 'https://erelement.com/' + response.xpath('//*[@id="productMainImage"]//a/img/@src').get()
         url = response.url
+
+        item = {
+            "name": name,
+            "description": self.filter_description(description),
+            "price": self.filter_price(price),
+            "category": self.filter_category(category),
+            "image": image,
+            "url": url
+        }
+
+        yield item

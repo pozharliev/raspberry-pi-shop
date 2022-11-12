@@ -12,6 +12,18 @@ BOT_NAME = 'crawl'
 SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
 
+# Setting up django's project full path.
+import sys
+sys.path.insert(0, '/code/server')
+
+# Setting up django's settings module name.
+# This module is located at /home/rolando/projects/myweb/myweb/settings.py.
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'server.settings'
+
+# Since Django 1.7, setup() call is required to populate the apps registry.
+import django; django.setup()
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawl (+http://www.yourdomain.com)'
@@ -62,9 +74,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'crawl.pipelines.CrawlPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'crawl.pipelines.CrawlPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
