@@ -3,21 +3,24 @@
     "model": "components.categories",
     "pk": 1,
     "fields": {
-      "name": "raspberry-pi"
+      "name": "raspberry-pi",
+      "display_name": "Raspberry Pis"
     }
   },
   {
     "model": "components.categories",
     "pk": 2,
     "fields": {
-      "name": "accessories"
+      "name": "accessories",
+      "display_name": "Accessories"
     }
   },
   {
     "model": "components.categories",
     "pk": 3,
     "fields": {
-      "name": "others"
+      "name": "others",
+      "display_name": "Others"
     }
   }
 ]

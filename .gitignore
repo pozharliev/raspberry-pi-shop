@@ -3,3 +3,4 @@ data/
 .idea/
 client/package-lock.json
 server/api/__pycache__/
+server/server/logs/
