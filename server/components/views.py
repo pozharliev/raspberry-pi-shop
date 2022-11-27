@@ -1,5 +1,5 @@
+from django.http import HttpRequest
 from rest_framework.response import Response
-from rest_framework.request import Request
 from rest_framework.viewsets import ViewSet
 
 from .models import Categories, Component
@@ -12,7 +12,7 @@ class CategoriesViewSet(ViewSet):
     """
     permission_classes = []
 
-    def list(self, request: Request):
+    def list(self, request: HttpRequest):
         """
         Returns all categories and their id's.
         """
@@ -21,7 +21,7 @@ class CategoriesViewSet(ViewSet):
 
         return Response(serialized_categories.data)
 
-    def retrieve(self, request: Request, pk=None):
+    def retrieve(self, request: HttpRequest, pk=None):
         """
         Returns category based on the id.
         """
@@ -36,7 +36,7 @@ class ComponentsViewSet(ViewSet):
     Viewset for the components model
     """
 
-    def list(self, request: Request):
+    def list(self, request: HttpRequest):
         """
         Returns all components
         """
@@ -45,7 +45,7 @@ class ComponentsViewSet(ViewSet):
 
         return Response(serialized_components.data)
 
-    def retrieve(self, request: Request, pk=None):
+    def retrieve(self, request: HttpRequest, pk=None):
         """
         Returns component based on the id
         """
@@ -54,7 +54,7 @@ class ComponentsViewSet(ViewSet):
 
         return Response(serialized_component.data)
 
-    def create(self, request: Request):
+    def create(self, request: HttpRequest):
         category_id = request.data.get('categoryId')
 
         components = Component.objects.all()
