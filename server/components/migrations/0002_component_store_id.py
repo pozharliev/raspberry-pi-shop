@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='component',
             name='store_id',
-            field=models.ForeignKey(default=-1, on_delete=django.db.models.deletion.CASCADE, to='stores.store'),
+            field=models.ForeignKey(default=-1, on_delete=django.db.models.deletion.CASCADE, to='stores.stores'),
             preserve_default=False,
         ),
     ]

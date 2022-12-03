@@ -10,10 +10,10 @@ class Categories(models.Model):
 
 class Component(models.Model):
     name = models.TextField()
-    store = models.ForeignKey(to=Store, on_delete=models.CASCADE)
+    store_id = models.ForeignKey(to=Store, on_delete=models.CASCADE)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
+    category_id = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
     image = models.TextField()
     url = models.TextField()
 

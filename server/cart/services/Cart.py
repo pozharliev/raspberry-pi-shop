@@ -39,8 +39,8 @@ class Cart:
                 cart["totals"]["total"] += float(item['price'])
                 cart["totals"]["subtotal"] += float(item['price'])
 
-                if item['store'] not in stores:
-                    stores.append(item['store'])
+                if item['store_id'] not in stores:
+                    stores.append(item['store_id'])
 
         for store_id in stores:
             store = Store.objects.get(id=store_id)

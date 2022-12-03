@@ -4,7 +4,7 @@ from .models import Store
 
 class StoreSerializer(ModelSerializer):
     """
-    Serializer for the store model
+    Serializer for the stores model
     """
     class Meta:
         model = Store

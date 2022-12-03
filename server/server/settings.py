@@ -27,10 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_cron',
+    'corsheaders',
     'server',
     'components',
     'crawl',
-    'stores'
+    'stores',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
 ]
 
 CRON_CLASSES = [
@@ -74,7 +79,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'server.middleware.CartMiddleware.CartMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'server.middleware.CartMiddleware.CartMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'

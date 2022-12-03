@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             new_name='Store',
         ),
         migrations.AlterModelTable(
-            name='store',
+            name='stores',
             table='stores',
         ),
     ]
