@@ -1,4 +1,4 @@
-import Http from "../requests";
+import Http from "@app/requests";
 
 export interface ICartTotals {
 	total: number;
@@ -20,7 +20,7 @@ export interface ICartItem {
 }
 
 export interface ICartStore {
-	ok: boolean;
+	ok: boolean; // TODO
 }
 
 export interface ICartResponse {

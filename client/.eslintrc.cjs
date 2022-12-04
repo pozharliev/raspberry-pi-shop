@@ -37,12 +37,18 @@ module.exports = {
     "semi": ["error", "always"],
     "space-before-function-paren": ["error", "never"],
     "no-throw-literal": "off",
+    "no-trailing-spaces": ["error", { "skipBlankLines": true}],
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+    "comma-dangle": ["error", "always-multiline"],
+
+    "react/react-in-jsx-scope": "off",
 
     "@typescript-eslint/indent": ["error", "tab"],
     "@typescript-eslint/quotes": ["error", "double"],
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/space-before-function-paren": ["error", "never"],
     "@typescript-eslint/no-extraneous-class": ["error", { "allowStaticOnly": true }],
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
     "@typescript-eslint/no-throw-literal": "off",
     "@typescript-eslint/promise-function-async": ["error", {
         "allowAny": true,
@@ -58,7 +64,7 @@ module.exports = {
             "requireLast": true,
         },
         "singleline": {
-            "delimiter": "semi",
+            "delimiter": "comma",
             "requireLast": false,
         },
     }],

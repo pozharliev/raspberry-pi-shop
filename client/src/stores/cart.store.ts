@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { ICartItem } from "@app/services/Cart";
+
 export interface CartState {
-	ok?: boolean;
+	items: ICartItem[];
 }
 
 const cartInitialState: CartState = {
-
+	items: [],
 };
 
 const cartSlice = createSlice({
 	name: "cart",
 	initialState: cartInitialState,
 	reducers: {
-		setStoredItems: (state: CartState, action: PayloadAction<number>): void => {
-			state.ok = Boolean(action.payload);
-		}
-	}
+		setStoredItems: (state: CartState, action: PayloadAction<ICartItem[]>): void => {
+			state.items = action.payload;
+		},
+	},
 });
 
 const cartReducer = cartSlice.reducer;

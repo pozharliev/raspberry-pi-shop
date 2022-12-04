@@ -6,7 +6,7 @@ export default class Http {
 
 	private static async request(url: string, method: string, body?: Record<string, unknown>): Promise<AxiosResponse> {
 		const paths: { [key: string]: string } = {
-			"@api": Http._apiBase
+			"@api": Http._apiBase,
 		};
 
 		Object.keys(paths).forEach(path => {
@@ -16,7 +16,7 @@ export default class Http {
 		return await axios({
 			method,
 			url,
-			data: method !== "GET" ? body : null
+			data: method !== "GET" ? body : null,
 		}).then(res => {
 			if (res.status >= 400) {
 				throw res;
