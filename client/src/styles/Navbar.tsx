@@ -2,28 +2,33 @@ import styled from "styled-components";
 
 import { Container } from "@app/styles/common";
 
-import { MEDIUM } from "@app/const";
+import { MEDIUM, XX_LARGE } from "@app/const";
+
+const LOGO_HEIGHT = 65;
+const SEARCH_BAR_HEIGHT = LOGO_HEIGHT * 0.8;
 
 const SearchBarIcon = styled.i`
-  width: 200px;
   height: auto;
   position: absolute;
   left: 63%;
-  top: 6.3%;
+  top: 4.7%;
   
   @media(max-width: ${MEDIUM}px) {
     left: 60%;
   }
+  @media(min-width: ${XX_LARGE}px) {
+    left: 65%;
+  }
 `;
 
 const SearchBar = styled.input`
-  border: 2.53576px solid #231F20;
+  border: 1px solid #231F20;
   border-radius: 84.5252px;
   
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   
   width: 35vw;
-  height: 10vh;
+  height: ${SEARCH_BAR_HEIGHT}px;
 `;
 
 const Logo = ({ className }: { className?: string }): JSX.Element => {
@@ -35,7 +40,20 @@ const Logo = ({ className }: { className?: string }): JSX.Element => {
 	);
 };
 
-export const NavSearchBar = ({ className, children }: { className?: string, children?: JSX.Element[] }): JSX.Element => {
+export const CartIcon = ({ items }: { items: number }): JSX.Element => {
+	console.log(items);
+	return (
+		<i className="fa fa-shopping-cart" />
+	);
+};
+
+export const BlogIcon = (): JSX.Element => {
+	return (
+		<i className="fa fa-blog" />
+	);
+};
+
+export const NavSearchBar = ({ children }: { children?: JSX.Element[] }): JSX.Element => {
 	return (
 		<>
 			<SearchBarIcon className='fa fa-search'/>
@@ -48,6 +66,7 @@ export const NavSearchBar = ({ className, children }: { className?: string, chil
 
 export const NavContainer = styled(Container)`
   justify-content: space-between;
+  align-items: center;
   
   padding-right: 3rem;
   padding-left: 3rem;
@@ -55,6 +74,5 @@ export const NavContainer = styled(Container)`
 `;
 
 export const NavLogo = styled(Logo)`
-  width: 40px;
-  height: 40px;
+  height: ${LOGO_HEIGHT}px;
 `;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ReactElement } from "react";
-import { NavLogo, NavContainer, NavSearchBar } from "@app/styles/Navbar";
+import { NavLogo, NavContainer, NavSearchBar, CartIcon, BlogIcon } from "@app/styles/Navbar";
+import { Container } from "@app/styles/common";
 
 export const Navbar: React.FC = (): ReactElement => {
 	return (
@@ -11,9 +12,10 @@ export const Navbar: React.FC = (): ReactElement => {
 
 			<NavSearchBar />
 
-			<Link to={"/"}>
-				<h1> Ok 3</h1>
-			</Link>
+			<Container>
+				<CartIcon items={1} />
+				<BlogIcon />
+			</Container>
 		</NavContainer>
 	);
 };
