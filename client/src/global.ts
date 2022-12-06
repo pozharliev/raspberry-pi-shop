@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
 	  padding: 0;
 	  outline: 0;
 	  box-sizing: border-box;
-	  font-family: 'Open Sans', sans-serif;
+	  font-family: 'Inter', sans-serif;
 	}
 	#root {
 	  margin: 0 auto;

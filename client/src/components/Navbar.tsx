@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
 import { ReactElement } from "react";
-import { NavLogo, NavContainer, NavSearchBar, CartIcon, BlogIcon } from "@app/styles/Navbar";
-import { Container } from "@app/styles/common";
+import { Link } from "react-router-dom";
+
+import { NavLogo, NavContainer, NavSearchBar, NavCartIcon, NavBlogIcon, NavIconsContainer } from "@app/styles/navbar.style";
+import { useCartQuantity } from "@app/stores/selectors";
 
 export const Navbar: React.FC = (): ReactElement => {
+	const cartItems = useCartQuantity();
+
 	return (
 		<NavContainer>
 			<Link to={"/"}>
@@ -12,10 +15,10 @@ export const Navbar: React.FC = (): ReactElement => {
 
 			<NavSearchBar />
 
-			<Container>
-				<CartIcon items={1} />
-				<BlogIcon />
-			</Container>
+			<NavIconsContainer>
+				<NavBlogIcon />
+				<NavCartIcon items={cartItems} />
+			</NavIconsContainer>
 		</NavContainer>
 	);
 };
