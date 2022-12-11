@@ -34,10 +34,10 @@ class CrawlPipeline:
             name=item['name'],
             description=item['description'],
             price=float(item['price']),
-            category=await self.get_category(item['category']),
+            category_id=await self.get_category(item['category']),
             image=item['image'],
             url=item['url'],
-            store=await self.get_store(spider.name)
+            store_id=await self.get_store(spider.name)
         )
 
         await sync_to_async(component.save)()
