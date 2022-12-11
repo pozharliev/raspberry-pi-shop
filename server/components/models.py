@@ -17,5 +17,13 @@ class Component(models.Model):
     image = models.TextField()
     url = models.TextField()
 
+    def __str__(self):
+        return self.id
+
     class Meta:
         db_table = 'components'
+
+
+class Featured(models.Model):
+    component_id = models.ForeignKey(to=Component, on_delete=models.CASCADE)
+    order = models.IntegerField()

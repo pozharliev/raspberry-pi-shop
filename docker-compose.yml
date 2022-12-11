@@ -14,7 +14,7 @@ services:
 
   web:
     build: .
-    command: sh -c '../startup.sh'
+    command: sh -c './startup.sh'
     volumes:
       - .:/code
     ports:

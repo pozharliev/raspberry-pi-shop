@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Container } from "@app/styles/common.style.";
+import { Container } from "@app/styles/common.style";
 
 import { MEDIUM, XX_LARGE, X_LARGE, SMALL } from "@app/const";
 
@@ -73,7 +73,6 @@ const CartItems = styled.span`
 `;
 
 export const NavCartIcon = ({ items }: { items: number }): JSX.Element => {
-	items = 1;
 	return (
 		<>
 			<i className="fa fa-shopping-cart" style={{ fontSize: "2rem" }}/>

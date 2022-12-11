@@ -4,8 +4,6 @@ from asgiref.sync import sync_to_async
 
 from .items import ComponentItem
 
-import sys
-sys.path.append("..")
 from components.models import Categories
 from stores.models import Store
 
@@ -20,7 +18,6 @@ ComponentType = TypedDict('ComponentType', {
 
 
 class CrawlPipeline:
-
     @sync_to_async
     def get_category(self, category):
         return Categories.objects.get(name=category)

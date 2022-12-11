@@ -2,9 +2,7 @@ from typing import Iterator, List
 import scrapy
 from scrapy.http import Response, Request
 from w3lib.html import remove_tags
-# Don't ask...
-import sys
-sys.path.append("..")
+
 from stores.utils import Erelement
 
 

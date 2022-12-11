@@ -1,7 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Navbar } from "@app/components/Navbar";
+
+// const LandingPage = lazy(() => import("@app/pages/landing.page"));
+import LandingPage from "@app/pages/landing.page";
 
 const App = (): JSX.Element => {
 	return (
@@ -9,7 +12,7 @@ const App = (): JSX.Element => {
 			<Navbar/>
 
 			<Routes>
-				<Route path={"/"} element={<h1> Nice </h1>}/>
+				<Route path={"/"} element={<LandingPage />}/>
 			</Routes>
 
 		</Router>

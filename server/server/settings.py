@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'server',
     'components',
-    'crawl',
     'stores',
 ]
 

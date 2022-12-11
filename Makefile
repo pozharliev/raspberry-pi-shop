@@ -11,3 +11,6 @@ migrate:
 
 cron:
 	docker exec ${SERVER_CONTAINER} bash -c "poetry run python manage.py runcrons"
+
+featured:
+	docker exec ${SERVER_CONTAINER} bash -c "poetry run python server/scripts/choose_featured.py"
