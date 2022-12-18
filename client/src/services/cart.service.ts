@@ -31,14 +31,14 @@ export interface ICartResponse {
 
 export default class Cart {
 	static async get(): Promise<ICartResponse> {
-		return await Http.get("@api/cart").then(data => (data as unknown) as ICartResponse);
+		return await Http.get("@api/cart").then(data => data as unknown as ICartResponse);
 	}
 
 	static async addItem(itemId: number): Promise<ICartResponse> {
-		return await Http.get(`api/cart/${itemId}`).then(data => (data as unknown) as ICartResponse);
+		return await Http.get(`api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
 	}
 
 	static async removeItem(itemId: number): Promise<ICartResponse> {
-		return await Http.delete(`api/cart/${itemId}`).then(data => (data as unknown) as ICartResponse);
+		return await Http.delete(`api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
 	}
 }

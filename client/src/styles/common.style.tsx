@@ -1,15 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  align-content: center;
-  justify-content: center;
+export const Container = css`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
-export const ContainerSpaceBetween = styled(Container)`
-  justify-content: space-between; !important
+export const ContainerSpaceBetween = styled.div`
+	${Container};
+	justify-content: space-between;
 `;
 
-export const ContainerColumn = styled(Container)`
-  flex-direction: column;
+export const ContainerColumn = styled.div`
+	${Container};
+	flex-direction: column;
+`;
+
+export const ContainerRow = styled.div`
+	${Container};
+	flex-direction: row;
 `;

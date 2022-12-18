@@ -9,12 +9,11 @@ import LandingPage from "@app/pages/landing.page";
 const App = (): JSX.Element => {
 	return (
 		<Router>
-			<Navbar/>
+			<Navbar />
 
 			<Routes>
-				<Route path={"/"} element={<LandingPage />}/>
+				<Route path={"/"} element={<LandingPage />} />
 			</Routes>
-
 		</Router>
 	);
 };

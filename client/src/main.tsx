@@ -5,8 +5,10 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 
+import { ThemeProvider } from "styled-components";
+import GlobalStyles, { theme } from "./global";
+
 import { store } from "./store";
-import GlobalStyles from "./global";
 import App from "./app";
 
 const persistor = persistStore(store);
@@ -18,8 +20,10 @@ ReactDOM.createRoot(root).render(
 		<Provider store={store}>
 			<PersistGate persistor={persistor} loading={null}>
 				<GlobalStyles />
-				<App />
+				<ThemeProvider theme={theme}>
+					<App />
+				</ThemeProvider>
 			</PersistGate>
 		</Provider>
-	</React.StrictMode>,
+	</React.StrictMode>
 );
