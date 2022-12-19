@@ -31,12 +31,12 @@ export const ContainerTop = styled(ContainerSpaceBetween)`
 	padding-left: 7.5vw;
 	padding-right: 7.5vw;
 
-  	@media(max-width: ${MEDIUM}px) {
+	@media (max-width: ${MEDIUM}px) {
 		flex-direction: column;
 		align-content: space-evenly;
 		flex-wrap: wrap;
 		padding: 0;
-	  	padding-top: 1rem;
-		height: 24rem;
-    }
+		padding-top: 1rem;
+		height: 27rem;
+	}
 `;

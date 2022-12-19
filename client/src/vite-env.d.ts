@@ -4,6 +4,7 @@ declare module "styled-components" {
 	export interface DefaultTheme {
 		gradientColorFrom: string;
 		gradientColorTo: string;
+		color1: string;
 	}
 }
 

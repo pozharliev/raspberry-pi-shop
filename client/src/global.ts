@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export const theme: DefaultTheme = {
+	color1: "#BC1243",
 	gradientColorFrom: "#9B12BC",
 	gradientColorTo: "#BC1142",
 };
