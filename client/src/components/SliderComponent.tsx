@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import { Container, ContainerColumn, ContainerRow } from "@app/styles/common.style";
 import { SMALL } from "@app/const";
+import IComponent from "@app/types/Component";
 
 const raspberryImage = new URL("@app/assets/raspberry-pi.png", import.meta.url).href;
 
@@ -40,13 +42,13 @@ const Circle = styled.div<{ filled: boolean }>`
 	background: ${props => (props.filled ? "#BC1243" : "#C5C5C5")};
 	border-radius: 100%;
 
+	margin: 0.33rem;
+
 	width: 0.63rem;
 	height: 0.63rem;
 `;
 
 const SliderCirclesContainer = styled(ContainerRow)`
-	width: 15%;
-
 	padding-top: 0.33rem;
 
 	justify-content: space-between;
@@ -72,7 +74,48 @@ const SliderSmallText = styled.p`
 `;
 
 const SliderComponent = (): JSX.Element => {
-	const components = [1, 2, 3, 4];
+	const components: IComponent[] = [
+		{
+			id: 0,
+			name: "Raspberry Pi 4",
+			price: 10.99,
+			img: raspberryImage,
+			description: "nice",
+			url: "ok",
+			storeId: 1,
+			categoryId: 1,
+		},
+		{
+			id: 1,
+			name: "Raspberry Pi 3",
+			price: 13.99,
+			img: raspberryImage,
+			description: "nice",
+			url: "ok",
+			storeId: 1,
+			categoryId: 1,
+		},
+		{
+			id: 1,
+			name: "Raspberry Pi 3",
+			price: 13.99,
+			img: raspberryImage,
+			description: "nice",
+			url: "ok",
+			storeId: 1,
+			categoryId: 1,
+		},
+		{
+			id: 1,
+			name: "Raspberry Pi 3",
+			price: 13.99,
+			img: raspberryImage,
+			description: "nice",
+			url: "ok",
+			storeId: 1,
+			categoryId: 1,
+		},
+	];
 	const [componentId, setComponentId] = useState(0);
 	
 	const handleSliderClick = (): void => {
@@ -85,14 +128,14 @@ const SliderComponent = (): JSX.Element => {
 
 	return (
 		<ContainerColumn>
-			<SliderComponentContainer>
+			<SliderComponentContainer onClick={() => <Navigate to={`product/${(components[componentId].id as number)}`} replace={true} />}>
 				<SliderImgContainer>
-					<SliderComponentImg src={raspberryImage} alt={"ok"} />
+					<SliderComponentImg src={components[componentId].img} alt={"ok"} />
 				</SliderImgContainer>
 
 				<SliderTextContainer>
-					<SliderBigText> Raspberry Pi 4 </SliderBigText>
-					<SliderSmallText> $10.99 </SliderSmallText>
+					<SliderBigText> {components[componentId].name} </SliderBigText>
+					<SliderSmallText> {components[componentId].price} </SliderSmallText>
 				</SliderTextContainer>
 
 				<div style={{ cursor: "pointer" }} onClick = {() => handleSliderClick()}>

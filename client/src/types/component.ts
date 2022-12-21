@@ -1,11 +1,12 @@
 interface IComponent {
+	id: number;
 	name: string;
 	description: string;
 	img: string;
-	price: string;
+	price: number;
 	url: string;
-	storeId: string;
-	categoryId: string;
+	storeId: number;
+	categoryId: number;
 }
 
 export default IComponent;
