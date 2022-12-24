@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { LARGE, MEDIUM, SMALL, XX_LARGE } from "@app/const";
-import { ICategory } from "@app/services/category.service";
 
 const CategoriesContainer = styled.div`
 	display: flex;
@@ -106,7 +105,7 @@ const ShopNowText = styled.p`
 	}
 `;
 
-export const Category = ({ name, count, description }: { name: string; count: number; description: string }): JSX.Element => {
+export const Category = ({ name, count, description }: { name: string, count: number, description: string }): JSX.Element => {
 	return (
 		<CategoriesContainer>
 			<BigTextContainer>

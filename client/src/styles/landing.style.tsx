@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { ContainerSpaceBetween } from "@app/styles/common.style";
-import { LARGE, MEDIUM, SMALL, X_LARGE, XX_LARGE } from "@app/const";
+import { LARGE, MEDIUM, SMALL, X_LARGE } from "@app/const";
 
 export const P = styled.p`
 	font-size: 50px;
