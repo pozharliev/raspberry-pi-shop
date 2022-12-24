@@ -97,7 +97,8 @@ const SliderComponent = ({ components }: { components: IComponentFeatured[] }): 
 				<SliderTextContainer>
 					<SliderBigText>
 						{" "}
-						{components[componentId]?.component.displayName ?? components[componentId]?.component.name}{" "}
+						{components[componentId]?.component.displayName ?? components[componentId]?.component.name}
+						{" "}
 					</SliderBigText>
 					<SliderSmallText>${components[componentId]?.component.price} </SliderSmallText>
 				</SliderTextContainer>
