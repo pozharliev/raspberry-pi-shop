@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 from .models import Categories, Component, Featured
 from stores.serializers import StoreSerializer
@@ -8,6 +8,11 @@ class CategoriesSerializer(ModelSerializer):
     """
     Serializer for the Categories model
     """
+    count = SerializerMethodField()
+
+    def get_count(self, obj):
+        return Component.objects.filter(category=obj.id).count()
+
     class Meta:
         model = Categories
         fields = "__all__"

@@ -57,7 +57,7 @@ class ComponentsViewSet(ViewSet):
 
     def create(self, request: HttpRequest):
         """
-            Returns all components
+        Returns all components
         """
         category_id = request.data.get('categoryId')
 
@@ -71,6 +71,9 @@ class ComponentsViewSet(ViewSet):
 
     @action(methods=['GET'], detail=False, url_path='featured', url_name='featured')
     def featured(self, request: HttpRequest):
+        """
+        Returns all featured components
+        """
         featured = Featured.objects.all()
 
         serialized_featured = FeaturedSerializer(featured, many=True)

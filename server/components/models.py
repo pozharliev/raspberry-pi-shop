@@ -6,6 +6,7 @@ from stores.models import Store
 class Categories(models.Model):
     name = models.CharField(max_length=128, unique=True)
     display_name = models.CharField(max_length=128)
+    description = models.CharField(max_length=512, null=True)
 
 
 class Component(models.Model):

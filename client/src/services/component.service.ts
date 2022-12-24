@@ -30,7 +30,7 @@ export interface IComponentFeatured {
 	component: IComponent;
 }
 
-export default class Component {
+export default class ComponentService {
 	static async featured(): Promise<IComponentFeatured[]> {
 		return await Http.get("@api/components/featured/").then((res: AxiosResponse<IComponentFeatured[]>) => {
 			(res as unknown as IComponentFeatured[]).map(component => {

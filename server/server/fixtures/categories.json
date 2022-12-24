@@ -4,23 +4,35 @@
     "pk": 1,
     "fields": {
       "name": "raspberry-pi",
-      "display_name": "Raspberry Pis"
+      "display_name": "Raspberry Pis",
+      "description": "Explore are find the right raspberry for you."
     }
   },
   {
     "model": "components.categories",
     "pk": 2,
     "fields": {
-      "name": "accessories",
-      "display_name": "Accessories"
+      "name": "starter-pack",
+      "display_name": "Starter Pack",
+      "description": "Everything you need to start from the beginning."
     }
   },
   {
     "model": "components.categories",
     "pk": 3,
     "fields": {
+      "name": "accessories",
+      "display_name": "Accessories",
+      "description": "Freshen up your raspberry pi with something new!"
+    }
+  },
+  {
+    "model": "components.categories",
+    "pk": 4,
+    "fields": {
       "name": "others",
-      "display_name": "Others"
+      "display_name": "Others",
+      "description": "Maybe you need something else for you raspberry pi?"
     }
   }
 ]

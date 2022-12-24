@@ -33,12 +33,13 @@ const SliderImgContainer = styled.div`
 
 const SliderComponentImg = styled.img`
 	height: 11.5vh;
-}
 `;
 
 const Circle = styled.div<{ filled: boolean }>`
 	background: ${props => (props.filled ? "#BC1243" : "#C5C5C5")};
 	border-radius: 100%;
+  
+  	cursor: pointer;
 
 	margin: 0.33rem;
 
@@ -112,7 +113,7 @@ const SliderComponent = ({ components }: { components: IComponentFeatured[] }): 
 
 			<SliderCirclesContainer>
 				{components.map((item, index) => {
-					return <Circle filled={componentId === index} key={index} />;
+					return <Circle filled={componentId === index} key={index} onClick={() => setComponentId(index)} />;
 				})}
 			</SliderCirclesContainer>
 		</ContainerColumn>

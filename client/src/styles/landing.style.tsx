@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { ContainerSpaceBetween } from "@app/styles/common.style";
-import { MEDIUM, SMALL } from "@app/const";
+import { LARGE, MEDIUM, SMALL, X_LARGE, XX_LARGE } from "@app/const";
 
 export const P = styled.p`
 	font-size: 50px;
@@ -73,5 +73,27 @@ export const TextBetweenLines = styled.h2`
 		  margin-right: 1.2rem;
 	    }
     }
+`;
+
+export const ContainerCategories = styled.div`
+	display: grid;
+	gap: 4rem;
+  	grid-template-columns: 1fr 1fr 1fr 1fr;
+  	grid-template-rows: auto;
   
+  	margin-top: 1.5rem;
+  
+  	@media(max-width: ${X_LARGE}px) {
+	  	gap: 1rem;
+    }
+  
+  	@media(max-width: ${LARGE}px) {
+  		grid-template-columns: 1fr 1fr;
+	  	column-gap: 2rem;
+	  	row-gap: 1rem;
+    }
+  
+  	@media(max-width: ${SMALL}px) {
+	  	grid-template-columns: 1fr;
+    }
 `;

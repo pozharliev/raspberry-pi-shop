@@ -29,7 +29,7 @@ export interface ICartResponse {
 	stores: ICartStore[];
 }
 
-export default class Cart {
+export default class CartService {
 	static async get(): Promise<ICartResponse> {
 		return await Http.get("@api/cart").then(data => data as unknown as ICartResponse);
 	}
