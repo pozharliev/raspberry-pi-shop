@@ -20,3 +20,6 @@ jobs:
 
       - name: Code Linting
         run: npx eslint .
+
+      - name: Code formatting
+        run: npx prettier .
