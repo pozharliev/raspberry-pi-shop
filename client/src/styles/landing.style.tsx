@@ -48,52 +48,53 @@ export const ContainerLines = styled.div`
 export const TextBetweenLines = styled.h2`
 	display: flex;
 	flex-direction: row;
-  	align-items: center;
-  
-	&:before, &:after{
+	align-items: center;
+
+	&:before,
+	&:after {
 		content: "";
 		flex: 1 1;
 		border-bottom: 1px solid;
 	}
-  
+
 	&:before {
 		margin-right: 10px;
-	  	margin-left: 2.5rem;
+		margin-left: 2.5rem;
 	}
 	&:after {
 		margin-left: 10px;
-	  	margin-right: 2.5rem;
+		margin-right: 2.5rem;
 	}
-  	
-  	@media(max-width: ${SMALL}px) {
-	  	&:before {
-		  margin-left: 1.2rem;
-	    }
-	  	&:after {
-		  margin-right: 1.2rem;
-	    }
-    }
+
+	@media (max-width: ${SMALL}px) {
+		&:before {
+			margin-left: 1.2rem;
+		}
+		&:after {
+			margin-right: 1.2rem;
+		}
+	}
 `;
 
 export const ContainerCategories = styled.div`
 	display: grid;
 	gap: 4rem;
-  	grid-template-columns: 1fr 1fr 1fr 1fr;
-  	grid-template-rows: auto;
-  
-  	margin-top: 1.5rem;
-  
-  	@media(max-width: ${X_LARGE}px) {
-	  	gap: 1rem;
-    }
-  
-  	@media(max-width: ${LARGE}px) {
-  		grid-template-columns: 1fr 1fr;
-	  	column-gap: 2rem;
-	  	row-gap: 1rem;
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	grid-template-columns: 1fr;
-    }
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+
+	margin-top: 1.5rem;
+
+	@media (max-width: ${X_LARGE}px) {
+		gap: 1rem;
+	}
+
+	@media (max-width: ${LARGE}px) {
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+		row-gap: 1rem;
+	}
+
+	@media (max-width: ${SMALL}px) {
+		grid-template-columns: 1fr;
+	}
 `;

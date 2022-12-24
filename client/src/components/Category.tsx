@@ -4,109 +4,109 @@ import { ICategory } from "@app/services/category.service";
 
 const CategoriesContainer = styled.div`
 	display: flex;
-  	flex-direction: column;
-  
+	flex-direction: column;
+
 	background: linear-gradient(white, white) padding-box,
 		linear-gradient(to right, ${props => props.theme.gradientColorFrom}, ${props => props.theme.gradientColorFrom}) border-box;
 	border-radius: 2.5rem;
 	border: 1.5px solid transparent;
-  
-  	padding: 1rem 1.4rem;
-  
-  	width: 20rem;
+
+	padding: 1rem 1.4rem;
+
+	width: 20rem;
 	height: 9.5rem;
-  
-  	@media(max-width: ${XX_LARGE}px) {
-    	width: 15rem;
-    }
-  
-  	@media(max-width: ${LARGE}px) {
-	  	width: 22rem;
-    }
-  
-  	@media(max-width: ${MEDIUM}px) {
-	  	width: 16rem;
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	width: 23rem;
-	  	height: 10rem;
-    }
+
+	@media (max-width: ${XX_LARGE}px) {
+		width: 15rem;
+	}
+
+	@media (max-width: ${LARGE}px) {
+		width: 22rem;
+	}
+
+	@media (max-width: ${MEDIUM}px) {
+		width: 16rem;
+	}
+
+	@media (max-width: ${SMALL}px) {
+		width: 23rem;
+		height: 10rem;
+	}
 `;
 
 const BigTextContainer = styled.div`
 	display: flex;
-  	
-  	margin-bottom: 0.5rem;
-  
-  	h1 {
-	  	color: #242424;
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	h1 {
-		  font-size: 2.75rem;
-	    }
-    }
+
+	margin-bottom: 0.5rem;
+
+	h1 {
+		color: #242424;
+	}
+
+	@media (max-width: ${SMALL}px) {
+		h1 {
+			font-size: 2.75rem;
+		}
+	}
 `;
 
 const DescriptionContainer = styled.div`
 	display: flex;
-  
-  	max-width: 11rem;
-  
-  	margin-bottom: 1.2rem;
-  
-  	p {
-	  font-size: 0.65rem;
-	  font-weight: 700;
-	  
-	  color: #616161;
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	margin-bottom: 0.4rem;
-	  	max-width: 14rem;
-	  
-	  	p {
-		  	font-size: 0.80rem;
-	    }
-    }
+
+	max-width: 11rem;
+
+	margin-bottom: 1.2rem;
+
+	p {
+		font-size: 0.65rem;
+		font-weight: 700;
+
+		color: #616161;
+	}
+
+	@media (max-width: ${SMALL}px) {
+		margin-bottom: 0.4rem;
+		max-width: 14rem;
+
+		p {
+			font-size: 0.8rem;
+		}
+	}
 `;
 
 const BottomContainer = styled.div`
 	display: flex;
-  	justify-content: space-between;
-  	align-items: center;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 const PriceText = styled.p`
 	font-size: 0.65rem;
-  	font-weight: 700;
-  
+	font-weight: 700;
+
 	color: #909090;
-  
-  	@media(max-width: ${SMALL}px) {
-	  	font-size: 0.80rem;
-    }
+
+	@media (max-width: ${SMALL}px) {
+		font-size: 0.8rem;
+	}
 `;
 
 const ShopNowText = styled.p`
-	color: #2C2C2C;
-  	font-size: 0.73rem;
-  	font-weight: 900;
-  
-	border: 2px solid #2C2C2C;
-  	border-radius: 3rem;
-  
-  	padding: 0.3rem;
-  
-  	@media(max-width: ${SMALL}px) {
-	  	font-size: 0.85rem;
-    }
+	color: #2c2c2c;
+	font-size: 0.73rem;
+	font-weight: 900;
+
+	border: 2px solid #2c2c2c;
+	border-radius: 3rem;
+
+	padding: 0.3rem;
+
+	@media (max-width: ${SMALL}px) {
+		font-size: 0.85rem;
+	}
 `;
 
-export const Category = ({ name, count, description }: { name: string, count: number, description: string }): JSX.Element => {
+export const Category = ({ name, count, description }: { name: string; count: number; description: string }): JSX.Element => {
 	return (
 		<CategoriesContainer>
 			<BigTextContainer>

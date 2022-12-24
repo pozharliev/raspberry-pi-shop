@@ -31,7 +31,7 @@ const LandingPage: React.FC = (): JSX.Element => {
 					<GradientSpan> Raspberry </GradientSpan>
 				</ContainerColumn>
 
-				<SliderComponent components={featuredComponents}/>
+				<SliderComponent components={featuredComponents} />
 			</ContainerTop>
 
 			<ContainerLines>
@@ -41,7 +41,9 @@ const LandingPage: React.FC = (): JSX.Element => {
 			<ContainerRow>
 				<ContainerCategories>
 					{categories.map((category, index) => {
-						return <Category name={category.displayName} count={category.count} description={category.description} key={index} />;
+						return (
+							<Category name={category.displayName} count={category.count} description={category.description} key={index} />
+						);
 					})}
 				</ContainerCategories>
 			</ContainerRow>
