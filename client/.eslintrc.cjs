@@ -45,7 +45,7 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 
 		"@typescript-eslint/indent": ["error", "tab"],
-		"@typescript-eslint/restrict-template-expressions": ["error", { "allowNumber": true }],
+		"@typescript-eslint/restrict-template-expressions": ["error", { "allowAny": true }],
 		"@typescript-eslint/quotes": ["error", "double"],
 		"@typescript-eslint/semi": ["error", "always"],
 		"@typescript-eslint/space-before-function-paren": ["error", "never"],

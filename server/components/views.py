@@ -1,9 +1,10 @@
 from django.http import HttpRequest
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
+from rest_framework.decorators import action
 
-from .models import Categories, Component
-from .serializers import CategoriesSerializer, ComponentsSerializer
+from .models import Categories, Component, Featured
+from .serializers import CategoriesSerializer, ComponentsSerializer, FeaturedSerializer
 
 
 class CategoriesViewSet(ViewSet):
@@ -55,6 +56,9 @@ class ComponentsViewSet(ViewSet):
         return Response(serialized_component.data)
 
     def create(self, request: HttpRequest):
+        """
+            Returns all components
+        """
         category_id = request.data.get('categoryId')
 
         components = Component.objects.all()
@@ -64,3 +68,11 @@ class ComponentsViewSet(ViewSet):
 
         serialized_components = ComponentsSerializer(components, many=True)
         return Response(serialized_components.data)
+
+    @action(methods=['GET'], detail=False, url_path='featured', url_name='featured')
+    def featured(self, request: HttpRequest):
+        featured = Featured.objects.all()
+
+        serialized_featured = FeaturedSerializer(featured, many=True)
+
+        return Response(serialized_featured.data)

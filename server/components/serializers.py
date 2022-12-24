@@ -1,5 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Categories, Component
+
+from .models import Categories, Component, Featured
+from stores.serializers import StoreSerializer
 
 
 class CategoriesSerializer(ModelSerializer):
@@ -15,6 +17,20 @@ class ComponentsSerializer(ModelSerializer):
     """
     Serializer for the Components model
     """
+    category = CategoriesSerializer(many=False, read_only=True)
+    store = StoreSerializer(many=False, read_only=True)
+
     class Meta:
         model = Component
-        fields = "__all__"
+        fields = ["id", "name", "store", "description", "price", "image", "url", "category"]
+
+
+class FeaturedSerializer(ModelSerializer):
+    """
+    Serializer for the Featured model
+    """
+    component = ComponentsSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Featured
+        fields = ["order", "component"]

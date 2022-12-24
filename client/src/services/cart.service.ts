@@ -25,7 +25,7 @@ export interface ICartStore {
 
 export interface ICartResponse {
 	totals: ICartTotals;
-	items: Array<{ [key: number]: ICartItem }>;
+	items: { [key: number]: ICartItem };
 	stores: ICartStore[];
 }
 
@@ -35,10 +35,10 @@ export default class Cart {
 	}
 
 	static async addItem(itemId: number): Promise<ICartResponse> {
-		return await Http.get(`api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
+		return await Http.get(`@api/cart/item/${itemId}`).then(data => data as unknown as ICartResponse);
 	}
 
 	static async removeItem(itemId: number): Promise<ICartResponse> {
-		return await Http.delete(`api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
+		return await Http.delete(`@api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
 	}
 }

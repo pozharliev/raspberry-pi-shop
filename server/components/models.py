@@ -10,20 +10,17 @@ class Categories(models.Model):
 
 class Component(models.Model):
     name = models.TextField()
-    store_id = models.ForeignKey(to=Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(to=Store, on_delete=models.CASCADE)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category_id = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
     image = models.TextField()
     url = models.TextField()
-
-    def __str__(self):
-        return self.id
 
     class Meta:
         db_table = 'components'
 
 
 class Featured(models.Model):
-    component_id = models.ForeignKey(to=Component, on_delete=models.CASCADE)
+    component = models.ForeignKey(to=Component, on_delete=models.CASCADE)
     order = models.IntegerField()

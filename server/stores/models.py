@@ -7,6 +7,3 @@ class Store(models.Model):
     domain_name = models.CharField(max_length=128)
     allowed_domains = ArrayField(base_field=models.CharField(max_length=128))
     start_urls = ArrayField(base_field=models.CharField(max_length=128))
-
-    class Meta:
-        db_table = 'stores'

@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
+axios.defaults.withCredentials = true;
+
 export default class Http {
 	private static readonly _base: string = "http://localhost:8000/";
 	private static readonly _apiBase: string = this._base + "api";

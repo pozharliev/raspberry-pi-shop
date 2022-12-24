@@ -40,3 +40,38 @@ export const ContainerTop = styled(ContainerSpaceBetween)`
 		height: 27rem;
 	}
 `;
+
+export const ContainerLines = styled.div`
+	margin-top: 3rem;
+`;
+
+export const TextBetweenLines = styled.h2`
+	display: flex;
+	flex-direction: row;
+  	align-items: center;
+  
+	&:before, &:after{
+		content: "";
+		flex: 1 1;
+		border-bottom: 1px solid;
+	}
+  
+	&:before {
+		margin-right: 10px;
+	  	margin-left: 2.5rem;
+	}
+	&:after {
+		margin-left: 10px;
+	  	margin-right: 2.5rem;
+	}
+  	
+  	@media(max-width: ${SMALL}px) {
+	  	&:before {
+		  margin-left: 1.2rem;
+	    }
+	  	&:after {
+		  margin-right: 1.2rem;
+	    }
+    }
+  
+`;
