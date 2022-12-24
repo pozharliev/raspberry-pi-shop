@@ -1,0 +1,19 @@
+name: CI
+on: push
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install NodeJS
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
+
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install -g eslint
+
+      - name: Code Linting
+        run: eslint client/ --fix
