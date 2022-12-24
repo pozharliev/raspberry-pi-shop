@@ -3,6 +3,9 @@ on: push
 jobs:
   eslint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - name: Install NodeJS
         uses: actions/setup-node@v2
@@ -13,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Dependencies
-        run: npm install -g eslint
+        run: npm install
 
       - name: Code Linting
-        run: eslint client/ --fix
+        run: npx eslint .
