@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { ContainerColumn, ContainerRow } from "@app/styles/common.style";
-import { ContainerLines, ContainerCategories, ContainerFeatured, ContainerTop, GradientSpan, P, TextBetweenLines } from "@app/styles/landing.style";
+import {
+	ContainerLines,
+	ContainerCategories,
+	ContainerFeatured,
+	ContainerTop,
+	GradientSpan,
+	P,
+	TextBetweenLines,
+} from "@app/styles/landing.style";
 
 import ComponentService, { IComponent, IComponentFeatured } from "@app/services/component.service";
 import CategoryService, { ICategory } from "@app/services/category.service";
