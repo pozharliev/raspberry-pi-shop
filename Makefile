@@ -6,6 +6,12 @@ dev-install:
 dev:
 	cd client && npm run dev
 
+frontend-format:
+	cd client && npm run format
+
+frontend-lint:
+	cd client && npm run lint
+
 migrate:
 	docker exec ${SERVER_CONTAINER} bash -c "poetry run python manage.py migrate"
 
