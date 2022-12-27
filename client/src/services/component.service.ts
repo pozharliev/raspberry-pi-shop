@@ -19,6 +19,7 @@ export interface IComponent {
 	displayName?: string;
 	store: IComponentStore;
 	description: string;
+	displayDescription?: string;
 	price: number;
 	category: IComponentCategory;
 	image: string;
@@ -31,6 +32,17 @@ export interface IComponentFeatured {
 }
 
 export default class ComponentService {
+	static async list(): Promise<IComponent[]> {
+		return await Http.get("@api/components").then((res: AxiosResponse<IComponent[]>) => {
+			(res as unknown as IComponent[]).map(component => {
+				component.displayName = component.name.replace(",", " ").split(" ").slice(0, 3).join(" ");
+				component.displayDescription = component.description.split(" ").slice(0, 5).join(" ");
+				return component;
+			});
+			return res as unknown as IComponent[];
+		});
+	}
+
 	static async featured(): Promise<IComponentFeatured[]> {
 		return await Http.get("@api/components/featured/").then((res: AxiosResponse<IComponentFeatured[]>) => {
 			(res as unknown as IComponentFeatured[]).map(component => {

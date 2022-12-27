@@ -38,12 +38,12 @@ const BigTextContainer = styled.div`
 
 	margin-bottom: 0.5rem;
 
-	h1 {
+	h2 {
 		color: #242424;
 	}
 
 	@media (max-width: ${SMALL}px) {
-		h1 {
+		h2 {
 			font-size: 2.75rem;
 		}
 	}
@@ -54,7 +54,7 @@ const DescriptionContainer = styled.div`
 
 	max-width: 11rem;
 
-	margin-bottom: 1.2rem;
+	margin-bottom: 2rem;
 
 	p {
 		font-size: 0.65rem;
@@ -109,7 +109,7 @@ export const Category = ({ name, count, description }: { name: string, count: nu
 	return (
 		<CategoriesContainer>
 			<BigTextContainer>
-				<h1> {name} </h1>
+				<h2> {name} </h2>
 			</BigTextContainer>
 
 			<DescriptionContainer>

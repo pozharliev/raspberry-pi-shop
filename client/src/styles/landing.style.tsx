@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { ContainerSpaceBetween } from "@app/styles/common.style";
-import { LARGE, MEDIUM, SMALL, X_LARGE } from "@app/const";
+import { LARGE, MEDIUM, SMALL, X_LARGE, XXX_LARGE } from "@app/const";
 
 export const P = styled.p`
 	font-size: 50px;
@@ -43,6 +43,7 @@ export const ContainerTop = styled(ContainerSpaceBetween)`
 
 export const ContainerLines = styled.div`
 	margin-top: 3rem;
+  	margin-bottom: 1.5rem;
 `;
 
 export const TextBetweenLines = styled.h2`
@@ -82,7 +83,6 @@ export const ContainerCategories = styled.div`
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: auto;
 
-	margin-top: 1.5rem;
 
 	@media (max-width: ${X_LARGE}px) {
 		gap: 1rem;
@@ -97,4 +97,32 @@ export const ContainerCategories = styled.div`
 	@media (max-width: ${SMALL}px) {
 		grid-template-columns: 1fr;
 	}
+`;
+
+export const ContainerFeatured = styled.div`
+	display: grid;
+  	gap: 2rem;
+  	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+  
+  	@media(min-width: ${XXX_LARGE}px) {
+	  	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  
+  	@media(max-width: ${X_LARGE}px) {
+	  	gap: 1rem;
+    }
+  
+  	@media(max-width: ${LARGE}px) {
+	  	grid-template-columns: 1fr 1fr 1fr;
+	  	gap: 2rem;
+    }
+  
+  	@media(max-width: ${MEDIUM}px) {
+	  	gap: 1rem;
+    }
+  
+  	@media(max-width: ${SMALL}px) {
+	  	grid-template-columns: 1fr 1fr;
+    }
 `;
