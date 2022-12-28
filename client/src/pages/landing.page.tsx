@@ -74,7 +74,7 @@ const LandingPage: React.FC = (): JSX.Element => {
 
 			<ContainerRow>
 				<ContainerFeatured>
-					{components.slice(0, 15).map((component, index) => {
+					{components.slice(0, 18).map((component, index) => {
 						return <Component component={component} key={index} />;
 					})}
 				</ContainerFeatured>

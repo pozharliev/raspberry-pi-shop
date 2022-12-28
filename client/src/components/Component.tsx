@@ -4,6 +4,7 @@ import { Container } from "@app/styles/common.style";
 
 import { IComponent } from "@app/services/component.service";
 import { MEDIUM, SMALL, X_LARGE } from "@app/const";
+import serverImage from "@app/utils/serverImage";
 
 const ComponentContainer = styled.div`
 	background: #eff3f4;
@@ -87,7 +88,7 @@ export const Component = ({ component }: { component: IComponent }): JSX.Element
 	return (
 		<ComponentContainer>
 			<ImageContainer>
-				<Image src={component.image} />
+				<Image src={serverImage(component.id)} />
 			</ImageContainer>
 
 			<h3> {component.displayName ?? component.name} </h3>

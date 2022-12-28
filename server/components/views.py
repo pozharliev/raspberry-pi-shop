@@ -2,6 +2,11 @@ from django.http import HttpRequest
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from rest_framework.decorators import action
+import base64
+from wsgiref.util import FileWrapper
+
+from server.constants import IMAGES_DIR
+from server.renderers import PNGRenderer
 
 from .models import Categories, Component, Featured
 from .serializers import CategoriesSerializer, ComponentsSerializer, FeaturedSerializer
@@ -79,3 +84,8 @@ class ComponentsViewSet(ViewSet):
         serialized_featured = FeaturedSerializer(featured, many=True)
 
         return Response(serialized_featured.data)
+
+    @action(methods=['GET'], detail=True, url_path='image', url_name='image', renderer_classes=(PNGRenderer,))
+    def image(self, request: HttpRequest, pk=None):
+        handler = open(f"{IMAGES_DIR / str(pk)}.png", "rb")
+        return Response(FileWrapper(handler), content_type="image/png")

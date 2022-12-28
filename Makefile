@@ -18,5 +18,8 @@ migrate:
 cron:
 	docker exec ${SERVER_CONTAINER} bash -c "poetry run python manage.py runcrons"
 
+scrapers:
+	docker exec ${SERVER_CONTAINER} bash -c "cd crawl && poetry run scrapy crawl erelement"
+
 featured:
 	docker exec ${SERVER_CONTAINER} bash -c "poetry run python server/scripts/choose_featured.py"

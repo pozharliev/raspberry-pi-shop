@@ -18,3 +18,6 @@
 ### Backend is on `http://localhost:8000/`
 
 ### Frontend is on `http://localhost:4000/`
+
+# Running commands in the container
+### Most commands related to python should be run with the prefix `poetry run`

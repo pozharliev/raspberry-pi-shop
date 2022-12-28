@@ -1,7 +1,9 @@
 from typing import TypedDict
 from asgiref.sync import sync_to_async
 
+from .services import ImageService
 from .items import ComponentItem
+
 from components.models import Categories, Component
 from stores.models import Store
 
@@ -38,7 +40,7 @@ class CrawlPipeline:
                        .update(
                             name=item['name'],
                             description=item['description'],
-                            price=float(item['price']),
+                            price=0 if not item['price'] else float(item['price']),
                             category=category,
                             image=item['image'],
                             url=item['url'],
@@ -50,20 +52,26 @@ class CrawlPipeline:
         store = await self._get_store(spider.name)
         category = await self._get_category(item['category'])
 
+        item_is_new = False
+
         if await self._item_exists(item['name'], store):
             component = await self._update_item(item, store, category)
         else:
             component = ComponentItem(
                 name=item['name'],
                 description=item['description'],
-                price=float(item['price']),
+                price=0 if not item['price'] else float(item['price']),
                 category=category,
                 image=item['image'],
                 url=item['url'],
                 store=store
             )
+            item_is_new = True
 
-        await sync_to_async(component.save)()
+        component = await sync_to_async(component.save)()
+
+        if item_is_new:
+            ImageService.save_image(item['image'], component.id)
 
         return component
 
