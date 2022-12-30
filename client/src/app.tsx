@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import { Navbar } from "@app/components/Navbar";
+import Navbar from "@app/components/Navbar";
+import LandingPage from "@app/pages/landing.page";
+import ProductPage from "@app/pages/product.page";
 
 import CartService from "@app/services/cart.service";
 
-// const LandingPage = lazy(() => import("@app/pages/landing.page"));
-import LandingPage from "@app/pages/landing.page";
 import { setStoredItems } from "@app/stores/cart.store";
-import { useDispatch } from "react-redux";
 
 const App = (): JSX.Element => {
 	const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const App = (): JSX.Element => {
 
 			<Routes>
 				<Route path={"/"} element={<LandingPage />} />
+				<Route path={"/component/:id"} element={<ProductPage />} />
 			</Routes>
 		</Router>
 	);

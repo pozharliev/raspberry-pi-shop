@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { NavLogo, NavContainer, NavSearchBar, NavCartIcon, NavBlogIcon, NavIconsContainer } from "@app/styles/navbar.style";
 import { useCartQuantity } from "@app/stores/selectors";
 
-export const Navbar: React.FC = (): ReactElement => {
+const Navbar: React.FC = (): ReactElement => {
 	const cartItems = useCartQuantity();
 
 	return (
@@ -22,3 +22,5 @@ export const Navbar: React.FC = (): ReactElement => {
 		</NavContainer>
 	);
 };
+
+export default Navbar;

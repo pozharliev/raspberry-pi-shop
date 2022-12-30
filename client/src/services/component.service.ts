@@ -43,6 +43,10 @@ export default class ComponentService {
 		});
 	}
 
+	static async get(id: number): Promise<IComponent> {
+		return await Http.get(`@api/components/${id}`).then(res => res as unknown as IComponent);
+	}
+
 	static async featured(): Promise<IComponentFeatured[]> {
 		return await Http.get("@api/components/featured/").then((res: AxiosResponse<IComponentFeatured[]>) => {
 			(res as unknown as IComponentFeatured[]).map(component => {
