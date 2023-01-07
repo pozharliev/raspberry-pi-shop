@@ -6,12 +6,12 @@ export const ProductPageContainer = styled(ContainerRow)`
 	height: 27rem;
 	gap: 2rem;
 	align-items: flex-end;
-
+  
 	@media (min-width: ${XX_LARGE}px) {
 		align-items: center;
 		gap: 6rem;
-	  
-	  	margin-top: 3rem;
+
+		margin-top: 3rem;
 
 		height: 37rem;
 	}
@@ -19,13 +19,13 @@ export const ProductPageContainer = styled(ContainerRow)`
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		margin-top: 2rem;
 		gap: 3rem;
-	  	height: 30rem;
+		height: 30rem;
 	}
 
 	@media (max-width: ${SMALL}px) {
 		flex-direction: column;
 		align-items: center;
-		height: 50rem;
+		height: 53rem;
 		margin-top: 1.25rem;
 	}
 `;
@@ -69,11 +69,11 @@ export const TextContainer = styled(ContainerColumn)`
 	width: 18.5rem;
 	padding-bottom: 1rem;
 
-    @media (min-width: ${XX_LARGE}px) {
+	@media (min-width: ${XX_LARGE}px) {
 		width: 30rem;
-      	height: 34rem;
-    }
-  
+		height: 40rem;
+	}
+
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		height: 28rem;
 		width: 25rem;
@@ -81,7 +81,7 @@ export const TextContainer = styled(ContainerColumn)`
 
 	@media (max-width: ${SMALL}px) {
 		max-width: 20rem;
-	  	height: 30rem;
+		height: 30rem;
 	}
 `;
 
@@ -123,10 +123,10 @@ export const BigText = styled.p`
 	font-weight: bolder;
 	font-size: 2rem;
 
-    @media (min-width: ${XX_LARGE}px) {
+	@media (min-width: ${XX_LARGE}px) {
 		font-size: 4rem;
-    }
-  
+	}
+
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		font-size: 3rem;
 	}
@@ -141,11 +141,11 @@ export const MidText = styled.p`
 	font-size: 2rem;
 	font-weight: bolder;
 
-    @media (min-width: ${XX_LARGE}px) {
+	@media (min-width: ${XX_LARGE}px) {
 		font-size: 3rem;
-    }
-  
-	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px ) {
+	}
+
+	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		font-size: 2.33rem;
 	}
 `;
@@ -154,10 +154,10 @@ export const SmallText = styled.h3`
 	color: #231f20;
 
 	padding: 0 1rem;
-  
-    @media (min-width: ${XX_LARGE}px) {
+
+	@media (min-width: ${XX_LARGE}px) {
 		font-size: 2rem;
-    }
+	}
 
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		font-size: 1.25rem;
@@ -171,10 +171,10 @@ export const SmallText = styled.h3`
 export const VerySmallText = styled.p`
 	color: #f11313;
 	font-weight: bolder;
-  
-    @media (min-width: ${XX_LARGE}px) {
+
+	@media (min-width: ${XX_LARGE}px) {
 		font-size: 1.5rem;
-    }
+	}
 `;
 
 export const Line = styled.hr`
@@ -219,13 +219,13 @@ export const Button = styled.span`
 	border-radius: 50%;
 	width: 1.5rem;
 	height: 1.5rem;
-  	cursor: pointer;
+	cursor: pointer;
 
-    @media (min-width: ${XX_LARGE}px) {
+	@media (min-width: ${XX_LARGE}px) {
 		width: 2rem;
-      	height: 2rem;
-    }
-  
+		height: 2rem;
+	}
+
 	@media (max-width: ${XX_LARGE}px) {
 		width: 1.75rem;
 		height: 1.75rem;
@@ -242,10 +242,10 @@ export const AddToCartButton = styled.button`
 	font-weight: bolder;
 	font-size: 1.1rem;
 
-    @media (min-width: ${XX_LARGE}px) {
+	@media (min-width: ${XX_LARGE}px) {
 		height: 4rem;
-    }
-  
+	}
+
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		height: 3rem;
 	}

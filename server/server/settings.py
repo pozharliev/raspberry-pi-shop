@@ -73,7 +73,7 @@ LOGGING = {
         'file': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'server' / 'logs' / f"{date.today().strftime('%d-%m-%Y')}.log",
+            'filename': BASE_DIR / 'server' / 'logs' / f"{date.today().strftime('%Y-%m-%d')}.log",
         },
     },
     'loggers': {

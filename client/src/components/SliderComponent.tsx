@@ -89,7 +89,7 @@ const SliderComponent = ({ components }: { components: IComponentFeatured[] }): 
 		<ContainerColumn>
 			<SliderComponentContainer>
 				<SliderImgContainer>
-					<Link to={`product/${components[componentId]?.component.id}`}>
+					<Link to={`component/${components[componentId]?.component.id}`}>
 						<SliderComponentImg src={components[componentId]?.component.image} alt={"ok"} />
 					</Link>
 				</SliderImgContainer>

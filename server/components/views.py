@@ -64,7 +64,7 @@ class ComponentsViewSet(ViewSet):
         """
         Returns all components
         """
-        category_id = request.data.get('categoryId')
+        category_id = request.data.get('category_id')
 
         components = Component.objects.all()
 
@@ -87,5 +87,17 @@ class ComponentsViewSet(ViewSet):
 
     @action(methods=['GET'], detail=True, url_path='image', url_name='image', renderer_classes=(PNGRenderer,))
     def image(self, request: HttpRequest, pk=None):
+        """
+        Returns an image for a component
+        """
         handler = open(f"{IMAGES_DIR / str(pk)}.png", "rb")
         return Response(FileWrapper(handler), content_type="image/png")
+
+    @action(methods=['POST'], detail=False, url_path='category', url_name='category')
+    def category(self, request: HttpRequest):
+        category_id = request.data.get('category_id')
+
+        components = Component.objects.filter(category=category_id)
+        serialized_components = ComponentsSerializer(components, many=True)
+
+        return Response(serialized_components.data)

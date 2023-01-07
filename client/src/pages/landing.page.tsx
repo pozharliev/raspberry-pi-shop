@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { ContainerColumn, ContainerRow } from "@app/styles/common.style";
+import { ContainerColumn, ContainerRow, ContainerComponents, TextBetweenLines } from "@app/styles/common.style";
 import {
 	ContainerLines,
 	ContainerCategories,
-	ContainerFeatured,
 	ContainerTop,
 	GradientSpan,
 	P,
-	TextBetweenLines,
 } from "@app/styles/landing.style";
 
 import ComponentService, { IComponent, IComponentFeatured } from "@app/services/component.service";
@@ -17,8 +16,12 @@ import CategoryService, { ICategory } from "@app/services/category.service";
 import SliderComponent from "@app/components/SliderComponent";
 import { Category } from "@app/components/Category";
 import { Component } from "@app/components/Component";
+import { setStoredComponents } from "@app/stores/component.store";
+import { useStoredComponents } from "@app/stores/selectors";
 
 const LandingPage: React.FC = (): JSX.Element => {
+	const dispatch = useDispatch();
+
 	const [components, setComponents] = useState<IComponent[]>([]);
 	const [categories, setCategories] = useState<ICategory[]>([]);
 	const [featuredComponents, setFeaturedComponents] = useState<IComponentFeatured[]>([]);
@@ -31,8 +34,13 @@ const LandingPage: React.FC = (): JSX.Element => {
 
 	useEffect(() => {
 		ComponentService.list()
-			.then(data => setComponents(data))
-			.catch(console.error);
+			.then(data => {
+				setComponents(data);
+				dispatch(setStoredComponents(data));
+			})
+			.catch(_ => {
+				setComponents(useStoredComponents());
+			});
 	}, []);
 
 	useEffect(() => {
@@ -40,8 +48,6 @@ const LandingPage: React.FC = (): JSX.Element => {
 			.then(data => setCategories(data))
 			.catch(console.error);
 	}, []);
-
-	console.log(components);
 
 	return (
 		<>
@@ -73,11 +79,11 @@ const LandingPage: React.FC = (): JSX.Element => {
 			</ContainerLines>
 
 			<ContainerRow>
-				<ContainerFeatured>
+				<ContainerComponents>
 					{components.slice(0, 18).map((component, index) => {
 						return <Component component={component} key={index} />;
 					})}
-				</ContainerFeatured>
+				</ContainerComponents>
 			</ContainerRow>
 		</>
 	);

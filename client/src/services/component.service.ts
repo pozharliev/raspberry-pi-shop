@@ -32,6 +32,10 @@ export interface IComponentFeatured {
 }
 
 export default class ComponentService {
+	static async get(id: number): Promise<IComponent> {
+		return await Http.get(`@api/components/${id}`).then(res => res as unknown as IComponent);
+	}
+
 	static async list(): Promise<IComponent[]> {
 		return await Http.get("@api/components").then((res: AxiosResponse<IComponent[]>) => {
 			(res as unknown as IComponent[]).map(component => {
@@ -43,8 +47,15 @@ export default class ComponentService {
 		});
 	}
 
-	static async get(id: number): Promise<IComponent> {
-		return await Http.get(`@api/components/${id}`).then(res => res as unknown as IComponent);
+	static async category(categoryId: number): Promise<IComponent[]> {
+		return await Http.post("@api/components/category/", { categoryId }).then((res: AxiosResponse<IComponent[]>) => {
+			(res as unknown as IComponent[]).map(component => {
+				component.displayName = component.name.replace(",", " ").split(" ").slice(0, 3).join(" ");
+				component.displayDescription = component.description.split(" ").slice(0, 5).join(" ");
+				return component;
+			});
+			return res as unknown as IComponent[];
+		});
 	}
 
 	static async featured(): Promise<IComponentFeatured[]> {

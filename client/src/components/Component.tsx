@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-import { Container } from "@app/styles/common.style";
+import { Container, ContainerColumn } from "@app/styles/common.style";
 
 import { IComponent } from "@app/services/component.service";
 import { MEDIUM, SMALL, X_LARGE } from "@app/const";
 import serverImage from "@app/utils/serverImage";
 
-const ComponentContainer = styled.div`
+const ComponentContainer = styled(ContainerColumn)`
+  	justify-content: space-between;
+  	align-items: flex-start;
+  
 	background: #eff3f4;
 	box-shadow: 0px 15.8786px 33.6252px rgba(0, 0, 0, 0.06);
 	border-radius: 1.5rem;
@@ -33,7 +36,10 @@ const ComponentContainer = styled.div`
 
 const ImageContainer = styled.div`
 	${Container};
-	margin-bottom: 0.75rem;
+  
+  	width: 100%;
+  
+  	margin-bottom: 0.33rem;
 
 	background: linear-gradient(270.59deg, #8384f4 -33.85%, #b5b5ea 99.51%);
 	border-radius: 1.5rem;
@@ -56,12 +62,12 @@ const Description = styled.p`
 	font-weight: 800;
 	font-size: 0.75rem;
 
+  	text-align: left;
+  
 	max-width: 12em;
 
 	color: #7c7c7c;
 
-	margin-top: 0.33rem;
-	margin-bottom: 0.8rem;
 `;
 
 const BottomContainer = styled.div`
@@ -69,7 +75,7 @@ const BottomContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
-	margin-bottom: 0.5rem;
+  	width: 100%;
 `;
 
 const P = styled.p`
