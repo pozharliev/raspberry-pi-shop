@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Container, ContainerColumn } from "@app/styles/common.style";
-
-import { IComponent } from "@app/services/component.service";
 import { MEDIUM, SMALL, X_LARGE } from "@app/const";
 import serverImage from "@app/utils/serverImage";
+import { IComponent } from "@app/services/component.service";
+import CartService from "@app/services/cart.service";
+import { useIsItemInCart } from "@app/stores/selectors";
+import { addStoredItem, removeStoredItem } from "@app/stores/cart.store";
 
 const ComponentContainer = styled(ContainerColumn)`
   	justify-content: space-between;
@@ -29,8 +33,16 @@ const ComponentContainer = styled(ContainerColumn)`
 	}
 
 	@media (max-width: ${SMALL}px) {
-		width: 11rem;
-		height: 15rem;
+		width: 22rem;
+	  	height: 21rem;
+	  
+	  	h3 {
+		  	font-size: 30px;
+	    }
+	  
+	  	h4 {
+		  font-size: 20px;
+	    }
 	}
 `;
 
@@ -43,17 +55,23 @@ const ImageContainer = styled.div`
 
 	background: linear-gradient(270.59deg, #8384f4 -33.85%, #b5b5ea 99.51%);
 	border-radius: 1.5rem;
+  
+	@media (max-width: ${SMALL}px) {
+		height: 10rem;
+	}
 `;
 
 const Image = styled.img`
 	width: 12rem;
+  	
+  	cursor: pointer;
 
 	@media (max-width: ${MEDIUM}px) {
 		width: 9rem;
 	}
 
 	@media (max-width: ${SMALL}px) {
-		width: 7rem;
+		height: 100%;
 	}
 `;
 
@@ -64,7 +82,13 @@ const Description = styled.p`
 
   	text-align: left;
   
-	max-width: 12em;
+	max-width: 12rem;
+  
+	@media (max-width: ${SMALL}px) {
+		font-size: 1rem;
+		
+		max-width: 16rem;
+	}
 
 	color: #7c7c7c;
 
@@ -78,23 +102,53 @@ const BottomContainer = styled.div`
   	width: 100%;
 `;
 
-const P = styled.p`
-	color: #2c2c2c;
+const P = styled.p<{ enabled: boolean }>`
+	color: ${props => props.enabled ? "#2c2c2c" : "white"};
 
 	font-size: 0.85rem;
-	font-weight: 800;
+	font-weight: ${props => props.enabled ? 800 : 500};
 
-	padding: 0.2rem;
+	padding: 0.3rem;
 
 	border: 1.95461px solid #2c2c2c;
 	border-radius: 23.3508px;
+  
+  	background-color: ${props => props.enabled ? "#eff3f4" : "black"};
+  
+  	cursor: pointer;
+  
+  	@media (max-width: ${SMALL}px) {
+    	font-size: 1.2rem;
+    }
 `;
 
 export const Component = ({ component }: { component: IComponent }): JSX.Element => {
+	const dispatch = useDispatch();
+
+	const isItemInCart = useIsItemInCart(component?.id);
+
+	const handleAddToCart = (): void => {
+		if (isItemInCart) {
+			CartService.removeItem(component.id)
+				.then(_ => {
+					dispatch(removeStoredItem(component.id));
+				})
+				.catch(console.error);
+		} else {
+			CartService.addItem(component.id, 1)
+				.then(_ => {
+					dispatch(addStoredItem({ item: component, quantity: 1 }));
+				})
+				.catch(console.error);
+		}
+	};
+
 	return (
 		<ComponentContainer>
 			<ImageContainer>
-				<Image src={serverImage(component.id)} />
+				<Link to={`/component/${component.id}`}>
+					<Image src={serverImage(component.id)} />
+				</Link>
 			</ImageContainer>
 
 			<h3> {component.displayName ?? component.name} </h3>
@@ -103,7 +157,12 @@ export const Component = ({ component }: { component: IComponent }): JSX.Element
 
 			<BottomContainer>
 				<h4>$ {component.price}</h4>
-				<P> Add to cart</P>
+				<P
+					enabled={!isItemInCart}
+					onClick={handleAddToCart}
+				>
+					{isItemInCart ? "Remove from cart" : "Add to cart"}
+				</P>
 			</BottomContainer>
 		</ComponentContainer>
 	);

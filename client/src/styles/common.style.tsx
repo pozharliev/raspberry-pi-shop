@@ -77,7 +77,7 @@ export const ContainerComponents = styled.div`
 	}
 
 	@media (max-width: ${SMALL}px) {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 	  	gap: 1.5rem;
 	}
 `;

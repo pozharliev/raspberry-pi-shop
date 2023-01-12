@@ -7,26 +7,34 @@ export const ProductPageContainer = styled(ContainerRow)`
 	gap: 2rem;
 	align-items: flex-end;
   
+  margin-bottom: 2rem;
+  
 	@media (min-width: ${XX_LARGE}px) {
 		align-items: center;
 		gap: 6rem;
 
-		margin-top: 3rem;
+		margin-top: 4rem;
+	  	margin-bottom: 5rem;
 
 		height: 37rem;
 	}
 
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
 		margin-top: 2rem;
-		gap: 3rem;
+		margin-bottom: 3rem;
+
+	  	gap: 3rem;
 		height: 30rem;
 	}
 
 	@media (max-width: ${SMALL}px) {
 		flex-direction: column;
 		align-items: center;
+	  
 		height: 53rem;
+	  
 		margin-top: 1.25rem;
+	  	margin-bottom: 2rem;
 	}
 `;
 
@@ -75,13 +83,13 @@ export const TextContainer = styled(ContainerColumn)`
 	}
 
 	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
-		height: 28rem;
+		height: 31rem;
 		width: 25rem;
 	}
 
 	@media (max-width: ${SMALL}px) {
 		max-width: 20rem;
-		height: 30rem;
+		height: 33rem;
 	}
 `;
 
@@ -232,15 +240,19 @@ export const Button = styled.span`
 	}
 `;
 
-export const AddToCartButton = styled.button`
+export const AddToCartButton = styled.button<{ enabled: boolean }>`
 	width: 100%;
 	height: 2.5rem;
 	border-radius: 1rem;
 	border: 0;
-	background: #bc1142;
-	color: white;
+  
+	background-color: ${props => props.enabled ? "#bc1142" : "#8384f4"};
+	color: ${props => props.enabled ? "white" : "white"};
+
 	font-weight: bolder;
 	font-size: 1.1rem;
+
+  	cursor: pointer;
 
 	@media (min-width: ${XX_LARGE}px) {
 		height: 4rem;

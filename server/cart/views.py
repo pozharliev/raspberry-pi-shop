@@ -21,7 +21,7 @@ class ItemViewset(ViewSet):
     Viewset for the items.
     """
 
-    def retrieve(self, request: Request, pk=None):
+    def update(self, request: Request, pk=None):
         """
         Adds an item to the cart.
         Args:
@@ -31,6 +31,9 @@ class ItemViewset(ViewSet):
         Returns:
             Response: 200 OK or 400 Error
         """
+
+        quantity = request.data.get('quantity', 1)
+
         # Items is empty
         if not (request.session.get('cart_contents', None) and request.session.get('cart_contents', {}).get('items', None)):
             request.session['cart_contents']['items'] = {}
@@ -50,10 +53,10 @@ class ItemViewset(ViewSet):
 
             request.session['cart_contents']['items'][pk] = {
                 **serialized_item.data,
-                "quantity": 1,
+                "quantity": quantity,
             }
         else:  # The item has been added before
-            request.session['cart_contents']['items'][pk]['quantity'] += 1  # Just add 1 to the quantity
+            request.session['cart_contents']['items'][pk]['quantity'] += int(quantity)  # Just add the desired quantity
 
         request.session.modified = True
 
@@ -69,7 +72,7 @@ class ItemViewset(ViewSet):
         Returns:
             Response: 200 OK or 400 Error
         """
-        request.session['cart_contents']['items'].pop(pk)
+        request.session['cart_contents']['items'].pop(pk, None)
         request.session.modified = True
 
         return Response(Cart.from_session(request.session['cart_contents']), 200)

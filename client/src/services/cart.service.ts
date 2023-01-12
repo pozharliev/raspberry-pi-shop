@@ -10,7 +10,7 @@ export interface ICartTotals {
 export interface ICartItem {
 	id: number;
 	name: string;
-	description: number;
+	description: string;
 	price: number;
 	image: string;
 	url: string;
@@ -34,11 +34,11 @@ export default class CartService {
 		return await Http.get("@api/cart").then(data => data as unknown as ICartResponse);
 	}
 
-	static async addItem(itemId: number): Promise<ICartResponse> {
-		return await Http.get(`@api/cart/item/${itemId}`).then(data => data as unknown as ICartResponse);
+	static async addItem(itemId: number, quantity = 1): Promise<ICartResponse> {
+		return await Http.put(`@api/cart/item/${itemId}`, { quantity }).then(data => data as unknown as ICartResponse);
 	}
 
 	static async removeItem(itemId: number): Promise<ICartResponse> {
-		return await Http.delete(`@api/cart/${itemId}`).then(data => data as unknown as ICartResponse);
+		return await Http.delete(`@api/cart/item/${itemId}`).then(data => data as unknown as ICartResponse);
 	}
 }

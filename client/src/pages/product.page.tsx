@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import {
 	BigImage,
 	ChoosingImagesContainer,
@@ -20,12 +22,16 @@ import {
 } from "@app/styles/product.style";
 import ComponentService, { IComponent } from "@app/services/component.service";
 import serverImage from "@app/utils/serverImage";
-import { useStoredComponents } from "@app/stores/selectors";
+import { useIsItemInCart, useStoredComponents } from "@app/stores/selectors";
 import { Component } from "@app/components/Component";
 import { ContainerColumn, TextBetweenLines, ContainerComponents } from "@app/styles/common.style";
+import CartService from "@app/services/cart.service";
+import { addStoredItem, removeStoredItem } from "@app/stores/cart.store";
 
 const ProductPage = (): JSX.Element => {
 	const { id } = useParams();
+	const dispatch = useDispatch();
+	const storedComponents = useStoredComponents();
 
 	const [component, setComponent] = useState<IComponent>();
 	const [similarComponents, setSimilarComponents] = useState<IComponent[]>();
@@ -33,6 +39,7 @@ const ProductPage = (): JSX.Element => {
 	const [imageId, setImageId] = useState(0);
 
 	const [images, setImages] = useState<string[]>([]);
+	const isItemInCart = useIsItemInCart(component?.id);
 
 	useEffect(() => {
 		if (id !== null) {
@@ -40,7 +47,7 @@ const ProductPage = (): JSX.Element => {
 				.then(res => setComponent(res))
 				.catch(console.error);
 		}
-	}, []);
+	}, [id]);
 
 	useEffect(() => {
 		if (component !== null && component !== undefined) {
@@ -49,7 +56,6 @@ const ProductPage = (): JSX.Element => {
 					setSimilarComponents(data);
 				})
 				.catch(_ => {
-					const storedComponents = useStoredComponents();
 					setSimilarComponents(storedComponents.filter(storedComponent => storedComponent.category.id === component.category.id));
 				});
 		}
@@ -68,6 +74,27 @@ const ProductPage = (): JSX.Element => {
 			setImageId(images.length - 1);
 		} else {
 			setImageId(imageId + operand);
+		}
+	};
+
+	const handleAddToCart = (): void => {
+		if (!isItemInCart) {
+			if (component?.id !== undefined && component?.id !== null && quantity > 0) {
+				CartService.addItem(component.id, quantity)
+					.then(_ => {
+						dispatch(addStoredItem({ item: component, quantity }));
+						setQuantity(0);
+					})
+					.catch(console.error);
+			}
+		} else {
+			if (component?.id !== undefined && component?.id !== null) {
+				CartService.removeItem(component.id)
+					.then(_ => {
+						dispatch(removeStoredItem(component.id));
+					})
+					.catch(console.error);
+			}
 		}
 	};
 
@@ -148,7 +175,7 @@ const ProductPage = (): JSX.Element => {
 						<br />
 						<p> {component?.description.split(" ").slice(15, 30).join(" ")} </p>
 					</DescriptionContainer>
-					<QuantitySelectorContainer>
+					<QuantitySelectorContainer style={{ display: isItemInCart ? "none" : "" }}>
 						<Button onClick={() => setQuantity(originalQuantity => (originalQuantity === 0 ? 0 : originalQuantity - 1))}>
 							{" "}
 							-{" "}
@@ -156,11 +183,9 @@ const ProductPage = (): JSX.Element => {
 						<SmallText> {quantity} </SmallText>
 						<Button onClick={() => setQuantity(originalQuantity => originalQuantity + 1)}> + </Button>
 					</QuantitySelectorContainer>
-					<AddToCartButton> ADD TO CART </AddToCartButton>
+					<AddToCartButton enabled={!isItemInCart} onClick={handleAddToCart}> {isItemInCart ? "Remove from cart".toUpperCase() : "Add to cart".toUpperCase()} </AddToCartButton>
 				</TextContainer>
 			</ProductPageContainer>
-
-			<TextBetweenLines style={{ margin: "5rem 0" }}> Similar components </TextBetweenLines>
 
 			<ContainerComponents>
 				{

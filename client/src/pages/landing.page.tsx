@@ -21,6 +21,7 @@ import { useStoredComponents } from "@app/stores/selectors";
 
 const LandingPage: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
+	const storedComponents = useStoredComponents();
 
 	const [components, setComponents] = useState<IComponent[]>([]);
 	const [categories, setCategories] = useState<ICategory[]>([]);
@@ -39,7 +40,7 @@ const LandingPage: React.FC = (): JSX.Element => {
 				dispatch(setStoredComponents(data));
 			})
 			.catch(_ => {
-				setComponents(useStoredComponents());
+				setComponents(storedComponents);
 			});
 	}, []);
 

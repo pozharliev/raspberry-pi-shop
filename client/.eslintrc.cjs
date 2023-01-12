@@ -24,8 +24,14 @@ module.exports = {
 		project: "tsconfig.json",
 		tsconfigRootDir: __dirname
 	},
-	plugins: ["react"],
+	plugins: [
+        "react",
+        "react-hooks"
+    ],
 	rules: {
+         "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+
 		"indent": ["error", "tab"],
 		"quotes": ["error", "double"],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],

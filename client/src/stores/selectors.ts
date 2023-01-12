@@ -12,6 +12,12 @@ export const useCartQuantity = (): number => {
 	});
 };
 
+export const useIsItemInCart = (id?: number): boolean => {
+	return useSelector((state: RootState) => {
+		return state.cart.items.find(item => item.id === id) !== undefined;
+	});
+};
+
 export const useStoredComponents = (): IComponent[] => {
 	return useSelector((state: RootState) => {
 		return state.component.components;
