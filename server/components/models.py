@@ -1,6 +1,6 @@
 from django.db import models
 
-from stores.models import Store
+from stores.models import Stores
 
 
 class Categories(models.Model):
@@ -9,9 +9,9 @@ class Categories(models.Model):
     description = models.CharField(max_length=512, null=True)
 
 
-class Component(models.Model):
+class Components(models.Model):
     name = models.TextField()
-    store = models.ForeignKey(to=Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(to=Stores, on_delete=models.CASCADE)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
@@ -23,5 +23,5 @@ class Component(models.Model):
 
 
 class Featured(models.Model):
-    component = models.ForeignKey(to=Component, on_delete=models.CASCADE)
+    component = models.ForeignKey(to=Components, on_delete=models.CASCADE)
     order = models.IntegerField()

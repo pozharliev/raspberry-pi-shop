@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IComponent } from "@app/services/component.service";
+import { IComponent } from "@app/types/component";
 
 export interface ComponentState {
 	components: IComponent[];

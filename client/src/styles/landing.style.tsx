@@ -25,8 +25,6 @@ export const GradientSpan = styled.span`
 `;
 
 export const ContainerTop = styled(ContainerSpaceBetween)`
-	width: 100vw;
-
 	padding-top: 6.5vh;
 	padding-left: 7.5vw;
 	padding-right: 7.5vw;

@@ -1,6 +1,6 @@
 from scrapy_djangoitem import DjangoItem
-from components.models import Component
+from components.models import Components
 
 
 class ComponentItem(DjangoItem):
-    django_model = Component
+    django_model = Components

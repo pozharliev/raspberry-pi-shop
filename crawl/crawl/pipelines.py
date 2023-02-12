@@ -4,8 +4,8 @@ from asgiref.sync import sync_to_async
 from .services import ImageService
 from .items import ComponentItem
 
-from components.models import Categories, Component
-from stores.models import Store
+from components.models import Categories, Components
+from stores.models import Stores
 
 ComponentType = TypedDict('ComponentType', {
     "name": str,
@@ -23,19 +23,19 @@ class CrawlPipeline:
         return Categories.objects.get(name=category)
 
     @sync_to_async
-    def _get_store(self, store: Store) -> Store:
-        return Store.objects.get(store_name=store)
+    def _get_store(self, store: Stores) -> Stores:
+        return Stores.objects.get(store_name=store)
 
     @sync_to_async
-    def _item_exists(self, name: str, store: Store) -> bool:
-        return Component.objects \
+    def _item_exists(self, name: str, store: Stores) -> bool:
+        return Components.objects \
                .filter(name=name) \
                .filter(store=store) \
                .exists()
 
     @sync_to_async
-    def _update_item(self, item: ComponentType, store: Store, category: Categories) -> Component:
-        component_id = Component.objects \
+    def _update_item(self, item: ComponentType, store: Stores, category: Categories) -> Components:
+        component_id = Components.objects \
                        .filter(name=item['name'])\
                        .update(
                             name=item['name'],
@@ -46,7 +46,7 @@ class CrawlPipeline:
                             url=item['url'],
                             store=store
                        )
-        return Component.objects.get(name=item['name'])
+        return Components.objects.get(name=item['name'])
 
     async def process_item(self, item: ComponentType, spider):
         store = await self._get_store(spider.name)

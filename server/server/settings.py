@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'server',
     'components',
     'stores',
+    'orders'
 ]
 
 CORS_ALLOWED_ORIGINS = [

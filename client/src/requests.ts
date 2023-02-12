@@ -42,6 +42,11 @@ export default class Http {
 		return Http.request(url, "PUT", body).then(res => res.data);
 	}
 
+	public static patch(url: string, body?: Record<string, unknown>): Promise<AxiosResponse> {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+		return Http.request(url, "PATCH", body).then(res => res.data);
+	}
+
 	public static delete(url: string, body?: Record<string, unknown>): Promise<AxiosResponse> {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		return Http.request(url, "DELETE", body).then(res => res.data);

@@ -2,20 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { ContainerColumn, ContainerRow, ContainerComponents, TextBetweenLines } from "@app/styles/common.style";
-import {
-	ContainerLines,
-	ContainerCategories,
-	ContainerTop,
-	GradientSpan,
-	P,
-} from "@app/styles/landing.style";
+import { ContainerLines, ContainerCategories, ContainerTop, GradientSpan, P } from "@app/styles/landing.style";
 
-import ComponentService, { IComponent, IComponentFeatured } from "@app/services/component.service";
+import ComponentService, { IComponentFeatured } from "@app/services/component.service";
 import CategoryService, { ICategory } from "@app/services/category.service";
 
-import SliderComponent from "@app/components/SliderComponent";
-import { Category } from "@app/components/Category";
-import { Component } from "@app/components/Component";
+import { ComponentUnit, IComponent } from "@app/types/component";
+
+import SliderComponent from "@app/components/ui/slider-component";
+import { Category } from "@app/components/ui/category";
+import { Component } from "@app/components/ui/component";
 import { setStoredComponents } from "@app/stores/component.store";
 import { useStoredComponents } from "@app/stores/selectors";
 

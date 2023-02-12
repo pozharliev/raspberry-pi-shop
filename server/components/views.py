@@ -2,13 +2,12 @@ from django.http import HttpRequest
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from rest_framework.decorators import action
-import base64
 from wsgiref.util import FileWrapper
 
 from server.constants import IMAGES_DIR
 from server.renderers import PNGRenderer
 
-from .models import Categories, Component, Featured
+from .models import Categories, Components, Featured
 from .serializers import CategoriesSerializer, ComponentsSerializer, FeaturedSerializer
 
 
@@ -46,7 +45,7 @@ class ComponentsViewSet(ViewSet):
         """
         Returns all components
         """
-        components = Component.objects.all()
+        components = Components.objects.all()
         serialized_components = ComponentsSerializer(components, many=True)
 
         return Response(serialized_components.data)
@@ -55,7 +54,7 @@ class ComponentsViewSet(ViewSet):
         """
         Returns component based on the id
         """
-        component = Component.objects.get(id=pk)
+        component = Components.objects.get(id=pk)
         serialized_component = ComponentsSerializer(component, many=False)
 
         return Response(serialized_component.data)
@@ -66,7 +65,7 @@ class ComponentsViewSet(ViewSet):
         """
         category_id = request.data.get('category_id')
 
-        components = Component.objects.all()
+        components = Components.objects.all()
 
         if category_id is not None:
             components = components.filter(category=category_id)
@@ -97,7 +96,7 @@ class ComponentsViewSet(ViewSet):
     def category(self, request: HttpRequest):
         category_id = request.data.get('category_id')
 
-        components = Component.objects.filter(category=category_id)
+        components = Components.objects.filter(category=category_id)
         serialized_components = ComponentsSerializer(components, many=True)
 
         return Response(serialized_components.data)

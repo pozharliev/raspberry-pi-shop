@@ -1,10 +1,13 @@
 import styled, { css } from "styled-components";
 import { LARGE, MEDIUM, SMALL, X_LARGE, XXX_LARGE } from "@app/const";
+import { Link } from "react-router-dom";
 
 export const Container = css`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+  
+  	//width: 100%;
 `;
 
 export const ContainerSpaceBetween = styled.div`
@@ -78,6 +81,11 @@ export const ContainerComponents = styled.div`
 
 	@media (max-width: ${SMALL}px) {
 		grid-template-columns: 1fr;
-	  	gap: 1.5rem;
+		gap: 1.5rem;
 	}
+`;
+
+export const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: inherit;
 `;

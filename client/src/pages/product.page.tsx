@@ -13,20 +13,19 @@ import {
 	BigText,
 	Line,
 	DescriptionContainer,
-	QuantitySelectorContainer,
-	Button,
 	AddToCartButton,
-	SmallText,
 	MidText,
 	VerySmallText,
 } from "@app/styles/product.style";
-import ComponentService, { IComponent } from "@app/services/component.service";
+import ComponentService from "@app/services/component.service";
+import { IComponent } from "@app/types/component";
 import serverImage from "@app/utils/serverImage";
 import { useIsItemInCart, useStoredComponents } from "@app/stores/selectors";
-import { Component } from "@app/components/Component";
-import { ContainerColumn, TextBetweenLines, ContainerComponents } from "@app/styles/common.style";
+import { Component } from "@app/components/ui/component";
+import { ContainerColumn, ContainerComponents } from "@app/styles/common.style";
 import CartService from "@app/services/cart.service";
 import { addStoredItem, removeStoredItem } from "@app/stores/cart.store";
+import QuantitySelector from "@app/components/common/quantity-selector";
 
 const ProductPage = (): JSX.Element => {
 	const { id } = useParams();
@@ -175,24 +174,23 @@ const ProductPage = (): JSX.Element => {
 						<br />
 						<p> {component?.description.split(" ").slice(15, 30).join(" ")} </p>
 					</DescriptionContainer>
-					<QuantitySelectorContainer style={{ display: isItemInCart ? "none" : "" }}>
-						<Button onClick={() => setQuantity(originalQuantity => (originalQuantity === 0 ? 0 : originalQuantity - 1))}>
-							{" "}
-							-{" "}
-						</Button>
-						<SmallText> {quantity} </SmallText>
-						<Button onClick={() => setQuantity(originalQuantity => originalQuantity + 1)}> + </Button>
-					</QuantitySelectorContainer>
-					<AddToCartButton enabled={!isItemInCart} onClick={handleAddToCart}> {isItemInCart ? "Remove from cart".toUpperCase() : "Add to cart".toUpperCase()} </AddToCartButton>
+					<QuantitySelector
+						quantity={quantity}
+						onClickMinus={() => setQuantity(originalQuantity => (originalQuantity === 0 ? 0 : originalQuantity - 1))}
+						onClickPlus={() => setQuantity(originalQuantity => originalQuantity + 1)}
+						style={{ display: isItemInCart ? "none" : "" }}
+					/>
+					<AddToCartButton enabled={!isItemInCart} onClick={handleAddToCart}>
+						{" "}
+						{isItemInCart ? "Remove from cart".toUpperCase() : "Add to cart".toUpperCase()}{" "}
+					</AddToCartButton>
 				</TextContainer>
 			</ProductPageContainer>
 
 			<ContainerComponents>
-				{
-					similarComponents?.slice(0, 10).map(similarComponent => {
-						return <Component component={similarComponent} key={similarComponent.id} />;
-					})
-				}
+				{similarComponents?.slice(0, 10).map(similarComponent => {
+					return <Component component={similarComponent} key={similarComponent.id} />;
+				})}
 			</ContainerComponents>
 		</ContainerColumn>
 	);

@@ -13,7 +13,7 @@
 #         featured_component.save()
 
 from django.core.management.base import BaseCommand, CommandError
-from components.models import Featured, Component
+from components.models import Featured, Components
 
 
 class Command(BaseCommand):
@@ -30,7 +30,7 @@ class Command(BaseCommand):
         order = 0
 
         for component_id in options['ids']:
-            component = Component.objects.get(id=component_id)
+            component = Components.objects.get(id=component_id)
 
             featured_component = Featured(component=component, order=order)
             featured_component.save()

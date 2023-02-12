@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from .services.Cart import Cart
 
-from components.models import Component
+from components.models import Components
 from components.serializers import ComponentsSerializer
 
 
@@ -13,7 +13,7 @@ class CartViewset(ViewSet):
     """
 
     def list(self, request: Request):
-        return Response(Cart.from_session(request.session['cart_contents']))
+        return Response(Cart.from_session(request))
 
 
 class ItemViewset(ViewSet):
@@ -43,9 +43,9 @@ class ItemViewset(ViewSet):
         if not request.session.get('cart_contents', {}).get('items', {}).get(pk, {}):
             # Check if the item exists
             try:
-                item = Component.objects.get(id=pk)
+                item = Components.objects.get(id=pk)
                 serialized_item = ComponentsSerializer(item, many=False)
-            except Component.DoesNotExist:
+            except Components.DoesNotExist:
                 return Response({
                     "status": "Failed",
                     "reason": "Component doesn't exist"
@@ -60,7 +60,7 @@ class ItemViewset(ViewSet):
 
         request.session.modified = True
 
-        return Response(Cart.from_session(request.session['cart_contents']), 200)
+        return Response(Cart.from_session(request), 200)
 
     def destroy(self, request: Request, pk=None):
         """
@@ -75,7 +75,7 @@ class ItemViewset(ViewSet):
         request.session['cart_contents']['items'].pop(pk, None)
         request.session.modified = True
 
-        return Response(Cart.from_session(request.session['cart_contents']), 200)
+        return Response(Cart.from_session(request), 200)
 
     def partial_update(self, request: Request, pk=None):
         quantity = request.data.get('quantity', "-1")
@@ -107,4 +107,4 @@ class ItemViewset(ViewSet):
 
         request.session.modified = True
 
-        return Response(Cart.from_session(request.session['cart_contents']), 200)
+        return Response(Cart.from_session(request), 200)

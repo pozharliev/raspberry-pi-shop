@@ -32,6 +32,7 @@ module.exports = {
          "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
 
+        "operator-linebreak": ["error", "after"],
 		"indent": ["error", "tab"],
 		"quotes": ["error", "double"],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],

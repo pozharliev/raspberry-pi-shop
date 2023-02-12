@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
-from .models import Categories, Component, Featured
+from .models import Categories, Components, Featured
 from stores.serializers import StoreSerializer
 
 
@@ -11,7 +11,7 @@ class CategoriesSerializer(ModelSerializer):
     count = SerializerMethodField()
 
     def get_count(self, obj):
-        return Component.objects.filter(category=obj.id).count()
+        return Components.objects.filter(category=obj.id).count()
 
     class Meta:
         model = Categories
@@ -26,7 +26,7 @@ class ComponentsSerializer(ModelSerializer):
     store = StoreSerializer(many=False, read_only=True)
 
     class Meta:
-        model = Component
+        model = Components
         fields = ["id", "name", "store", "description", "price", "image", "url", "category"]
 
 

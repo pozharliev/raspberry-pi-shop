@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Navbar from "@app/components/Navbar";
+import CartService from "@app/services/cart.service";
+
+import Navbar from "@app/components/navbar";
+
 import LandingPage from "@app/pages/landing.page";
 import ProductPage from "@app/pages/product.page";
-
-import CartService from "@app/services/cart.service";
+import CheckoutPage from "@app/pages/checkout.page";
+import ConfirmPage from "@app/pages/confirm.page";
 
 import { setStoredItems } from "@app/stores/cart.store";
 
@@ -28,6 +31,8 @@ const App = (): JSX.Element => {
 			<Routes>
 				<Route path={"/"} element={<LandingPage />} />
 				<Route path={"/component/:id"} element={<ProductPage />} />
+				<Route path={"/checkout"} element={<CheckoutPage />} />
+				<Route path={"/confirm/*"} element={<ConfirmPage />} />
 			</Routes>
 		</Router>
 	);

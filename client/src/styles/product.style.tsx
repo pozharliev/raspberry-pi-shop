@@ -6,15 +6,15 @@ export const ProductPageContainer = styled(ContainerRow)`
 	height: 27rem;
 	gap: 2rem;
 	align-items: flex-end;
-  
-  margin-bottom: 2rem;
-  
+
+	margin-bottom: 2rem;
+
 	@media (min-width: ${XX_LARGE}px) {
 		align-items: center;
 		gap: 6rem;
 
 		margin-top: 4rem;
-	  	margin-bottom: 5rem;
+		margin-bottom: 5rem;
 
 		height: 37rem;
 	}
@@ -23,18 +23,18 @@ export const ProductPageContainer = styled(ContainerRow)`
 		margin-top: 2rem;
 		margin-bottom: 3rem;
 
-	  	gap: 3rem;
+		gap: 3rem;
 		height: 30rem;
 	}
 
 	@media (max-width: ${SMALL}px) {
 		flex-direction: column;
 		align-items: center;
-	  
+
 		height: 53rem;
-	  
+
 		margin-top: 1.25rem;
-	  	margin-bottom: 2rem;
+		margin-bottom: 2rem;
 	}
 `;
 
@@ -158,24 +158,6 @@ export const MidText = styled.p`
 	}
 `;
 
-export const SmallText = styled.h3`
-	color: #231f20;
-
-	padding: 0 1rem;
-
-	@media (min-width: ${XX_LARGE}px) {
-		font-size: 2rem;
-	}
-
-	@media (min-width: ${LARGE}px) and (max-width: ${XX_LARGE}px) {
-		font-size: 1.25rem;
-	}
-
-	@media (max-width: ${SMALL}px) {
-		font-size: 1.5rem;
-	}
-`;
-
 export const VerySmallText = styled.p`
 	color: #f11313;
 	font-weight: bolder;
@@ -217,42 +199,19 @@ export const DescriptionContainer = styled.div`
 		}
 `;
 
-export const QuantitySelectorContainer = styled(ContainerRow)``;
-
-export const Button = styled.span`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #d9d9d9;
-	border-radius: 50%;
-	width: 1.5rem;
-	height: 1.5rem;
-	cursor: pointer;
-
-	@media (min-width: ${XX_LARGE}px) {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	@media (max-width: ${XX_LARGE}px) {
-		width: 1.75rem;
-		height: 1.75rem;
-	}
-`;
-
 export const AddToCartButton = styled.button<{ enabled: boolean }>`
 	width: 100%;
 	height: 2.5rem;
 	border-radius: 1rem;
 	border: 0;
-  
-	background-color: ${props => props.enabled ? "#bc1142" : "#8384f4"};
-	color: ${props => props.enabled ? "white" : "white"};
+
+	background-color: ${props => (props.enabled ? "#bc1142" : "#8384f4")};
+	color: ${props => (props.enabled ? "white" : "white")};
 
 	font-weight: bolder;
 	font-size: 1.1rem;
 
-  	cursor: pointer;
+	cursor: pointer;
 
 	@media (min-width: ${XX_LARGE}px) {
 		height: 4rem;
