@@ -1,4 +1,3 @@
-
 export interface IMeasurements {
 	width: number;
 	height: number;

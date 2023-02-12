@@ -12,66 +12,65 @@ import { LARGE, MEDIUM, SMALL, XX_LARGE, XXX_LARGE } from "@app/const";
 import { XMark } from "@app/components/common/svg";
 
 const ProductContainer = styled(ContainerRow)`
-    width: 26rem;
-  
-  	justify-content: flex-start;
-  
-  	h2 {
-	  	font-size: 1.8rem;
-	  	text-align: left;
-    }
-  
-  	p {
-    	font-size: 1.33rem;
-	  	font-weight: 600;
-	  
-	  	color: #7C7C7C;
-    }
-  
+	width: 26rem;
+
+	justify-content: flex-start;
+
+	h2 {
+		font-size: 1.8rem;
+		text-align: left;
+	}
+
+	p {
+		font-size: 1.33rem;
+		font-weight: 600;
+
+		color: #7c7c7c;
+	}
+
 	img {
 		background: linear-gradient(270.59deg, #8384f4 -33.85%, #b5b5ea 99.51%);
 		border-radius: 1.5rem;
-	  
-	  	margin-right: 1.5rem;
-	  
-	  	width: 150px;
+
+		margin-right: 1.5rem;
+
+		width: 150px;
 	}
-  
-	@media(max-width: ${XXX_LARGE}px) and (min-width: ${XX_LARGE}px) {
-		width: 24rem;    
+
+	@media (max-width: ${XXX_LARGE}px) and (min-width: ${XX_LARGE}px) {
+		width: 24rem;
 	}
-  
-  	@media(max-width: ${LARGE}px) {
-	  	h2 {
-	  		font-size: 1.5rem;
-    	}
-	  
-	  	img {
-		  	width: 125px;
-		  	margin-right: 1rem;
-	    }
-    }
-  
-  	@media(max-width: ${MEDIUM}px) {
+
+	@media (max-width: ${LARGE}px) {
+		h2 {
+			font-size: 1.5rem;
+		}
+
+		img {
+			width: 125px;
+			margin-right: 1rem;
+		}
+	}
+
+	@media (max-width: ${MEDIUM}px) {
 		width: 45vw;
 
-	  	img {
-		  	display: none;
-	    }
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	width: 35vw;
-	  
-	  	h2 {
-		  	font-size: 1.1rem;
-	    }
-	  
-	  	p {
-		  	font-size: 1rem;
-	    }
-    }
-  	
+		img {
+			display: none;
+		}
+	}
+
+	@media (max-width: ${SMALL}px) {
+		width: 35vw;
+
+		h2 {
+			font-size: 1.1rem;
+		}
+
+		p {
+			font-size: 1rem;
+		}
+	}
 `;
 
 const ProductTextContainer = styled(ContainerColumn)`
@@ -80,14 +79,14 @@ const ProductTextContainer = styled(ContainerColumn)`
 
 const PriceText = styled.h1`
 	text-align: center;
-  
-  	@media(max-width: ${MEDIUM}px) {
-	  	font-size: 1.75rem;
-    }
-  
-  	@media(max-width: ${SMALL}px) {
-	  	font-size: 1.33rem;
-    }
+
+	@media (max-width: ${MEDIUM}px) {
+		font-size: 1.75rem;
+	}
+
+	@media (max-width: ${SMALL}px) {
+		font-size: 1.33rem;
+	}
 `;
 
 const CartItem = ({ item }: { item: ICartItem }): JSX.Element => {
@@ -100,13 +99,13 @@ const CartItem = ({ item }: { item: ICartItem }): JSX.Element => {
 	useEffect(() => {
 		if (quantity === 0) {
 			CartService.removeItem(item.id)
-				.then((data) => {
+				.then(data => {
 					dispatch(setCart(data));
 				})
 				.catch(console.error);
 		} else {
 			CartService.updateItem(item.id, quantity)
-				.then((data) => {
+				.then(data => {
 					dispatch(setCart(data));
 				})
 				.catch(console.error);
@@ -115,7 +114,7 @@ const CartItem = ({ item }: { item: ICartItem }): JSX.Element => {
 
 	const removeItemFromCart = (): void => {
 		CartService.removeItem(item.id)
-			.then((data) => {
+			.then(data => {
 				dispatch(setCart(data));
 			})
 			.catch(console.error);

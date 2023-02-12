@@ -4,8 +4,13 @@ import { useNavigate } from "react-router-dom";
 import {
 	CartItemsHeading,
 	CheckoutCartItemsContainer,
-	CheckoutPageContainer, CheckoutContainerTotal,
-	Heading, ContinueShoppingText, CheckoutDetailsContainer, CheckoutDetailsTextContainer, CheckoutDetailsText,
+	CheckoutPageContainer,
+	CheckoutContainerTotal,
+	Heading,
+	ContinueShoppingText,
+	CheckoutDetailsContainer,
+	CheckoutDetailsTextContainer,
+	CheckoutDetailsText,
 } from "@app/styles/checkout.style";
 import { ContainerColumn } from "@app/styles/common.style";
 import CartItem from "@app/components/ui/cart-item";
@@ -58,13 +63,15 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 	}, []);
 
 	const checkShipping = (): void => {
-		if (detailsShipping !== undefined &&
-			((detailsShipping.city === "") ||
-			(detailsShipping.name === "") ||
-			(detailsShipping.address === "") ||
-			(detailsShipping.country === "") ||
-			(detailsShipping.email === "") ||
-			(detailsShipping.phone === ""))) {
+		if (
+			detailsShipping !== undefined &&
+			(detailsShipping.city === "" ||
+				detailsShipping.name === "" ||
+				detailsShipping.address === "" ||
+				detailsShipping.country === "" ||
+				detailsShipping.email === "" ||
+				detailsShipping.phone === "")
+		) {
 			setErrorsShipping("One or more fields are empty!");
 		} else {
 			setTabsState(2);
@@ -72,12 +79,14 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 	};
 
 	const checkPayment = (): void => {
-		if (detailsPayment !== undefined &&
-			((detailsPayment.cvv === "") ||
-			(detailsPayment.name === "") ||
-			(detailsPayment.cardNumber === "") ||
-			(detailsPayment.startDate === "") ||
-			(detailsPayment.endDate === ""))) {
+		if (
+			detailsPayment !== undefined &&
+			(detailsPayment.cvv === "" ||
+				detailsPayment.name === "" ||
+				detailsPayment.cardNumber === "" ||
+				detailsPayment.startDate === "" ||
+				detailsPayment.endDate === "")
+		) {
 			setErrorsPayment("One or more fields are empty!");
 		} else {
 			setTabsState(3);
@@ -97,13 +106,11 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 							<th> </th>
 						</CartItemsHeading>
 
-						{
-							cartItems.length > 0 ?
-								cartItems.map(item => {
-									return <CartItem item={item} key={item.id} />;
-								}) :
-								null
-						}
+						{cartItems.length > 0 ?
+							cartItems.map(item => {
+								return <CartItem item={item} key={item.id} />;
+							  }) :
+							null}
 					</CheckoutCartItemsContainer>
 					<CheckoutContainerTotal>
 						<ContinueShoppingText onClick={() => navigate("/")}>
@@ -112,7 +119,8 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 								breakpoints={{
 									[MEDIUM]: { width: 14, height: 23 },
 									[SMALL]: { width: 13, height: 20 },
-								}} />
+								}}
+							/>
 
 							<h1> Continue Shopping </h1>
 						</ContinueShoppingText>
@@ -122,13 +130,22 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 
 				<CheckoutDetailsContainer>
 					<CheckoutDetailsTextContainer>
-						<CheckoutDetailsText isActive={tabsState === 1} onClick={() => setTabsState(1)}> Shipping </CheckoutDetailsText>
-						<CheckoutDetailsText isActive={tabsState === 2} onClick={() => checkShipping()}> Payment </CheckoutDetailsText>
-						<CheckoutDetailsText isActive={tabsState === 3} onClick={() => checkPayment()}> Success </CheckoutDetailsText>
+						<CheckoutDetailsText isActive={tabsState === 1} onClick={() => setTabsState(1)}>
+							{" "}
+							Shipping{" "}
+						</CheckoutDetailsText>
+						<CheckoutDetailsText isActive={tabsState === 2} onClick={() => checkShipping()}>
+							{" "}
+							Payment{" "}
+						</CheckoutDetailsText>
+						<CheckoutDetailsText isActive={tabsState === 3} onClick={() => checkPayment()}>
+							{" "}
+							Success{" "}
+						</CheckoutDetailsText>
 					</CheckoutDetailsTextContainer>
 
-					{
-						tabsState === 1 ?
+					{tabsState === 1 ?
+						(
 							<CheckoutDetailsShipping
 								onClick={() => {
 									checkShipping();
@@ -136,19 +153,21 @@ const CheckoutPage: React.FC = (): JSX.Element => {
 								onChange={(data: ICheckoutShipping) => {
 									setDetailsShipping(data);
 								}}
-								error={errorsShipping} /> :
-							null
-					}
-					{
-						tabsState === 2 ?
+								error={errorsShipping}
+							/>
+						) :
+						null}
+					{tabsState === 2 ?
+						(
 							<CheckoutDetailsPayment
 								onClick={() => {
 									checkPayment();
 								}}
 								onChange={(data: ICheckoutPayment) => setDetailsPayment(data)}
-								error={errorsPayment} /> :
-							null
-					}
+								error={errorsPayment}
+							/>
+						) :
+						null}
 				</CheckoutDetailsContainer>
 			</CheckoutPageContainer>
 		</>

@@ -40,13 +40,17 @@ export const Button = styled.span<{ breakpoints?: { [key: number]: IMeasurements
 		width: 1.75rem;
 		height: 1.75rem;
 	}
-  
-  	${props => props.breakpoints !== undefined && Object.keys(props.breakpoints).map((key: string) => {
-	    if (props.breakpoints !== undefined) {
-			return `@media(max-width: ${key}px) { width: ${props.breakpoints[Number(key)].width}px;  height: ${props.breakpoints[Number(key)].height}px;}`;
-	    }
-		return "";
-	})}
+
+	${props =>
+		props.breakpoints !== undefined &&
+		Object.keys(props.breakpoints).map((key: string) => {
+			if (props.breakpoints !== undefined) {
+				return `@media(max-width: ${key}px) { width: ${props.breakpoints[Number(key)].width}px;  height: ${
+					props.breakpoints[Number(key)].height
+				}px;}`;
+			}
+			return "";
+		})}
 `;
 
 interface QuantitySelectorProps {
@@ -60,9 +64,15 @@ interface QuantitySelectorProps {
 const QuantitySelector = ({ quantity, breakpoints, onClickMinus, onClickPlus, style }: QuantitySelectorProps): JSX.Element => {
 	return (
 		<ContainerRow style={style}>
-			<Button breakpoints={breakpoints} onClick={() => onClickMinus(quantity)}> - </Button>
+			<Button breakpoints={breakpoints} onClick={() => onClickMinus(quantity)}>
+				{" "}
+				-{" "}
+			</Button>
 			<SmallText> {quantity} </SmallText>
-			<Button breakpoints={breakpoints} onClick={() => onClickPlus(quantity)}> + </Button>
+			<Button breakpoints={breakpoints} onClick={() => onClickPlus(quantity)}>
+				{" "}
+				+{" "}
+			</Button>
 		</ContainerRow>
 	);
 };

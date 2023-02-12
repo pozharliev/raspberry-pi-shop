@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 import { Button, CheckoutDetailsInputContainer, Input, Error } from "@app/styles/checkout.style";
 import { ICheckoutShipping } from "@app/services/checkout.service";
 
-const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => void, onChange: (data: ICheckoutShipping) => void, error: string }): JSX.Element => {
+const CheckoutDetailsShipping = ({
+	onClick,
+	onChange,
+	error,
+}: {
+	onClick: () => void;
+	onChange: (data: ICheckoutShipping) => void;
+	error: string;
+}): JSX.Element => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [country, setCountry] = useState("");
@@ -23,7 +31,8 @@ const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => 
 					placeholder="Full Name"
 					autoComplete="name"
 					value={name}
-					onChange={(e) => setName(e.target.value)} />
+					onChange={e => setName(e.target.value)}
+				/>
 
 				<Input
 					big={false}
@@ -31,7 +40,8 @@ const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => 
 					placeholder="Email"
 					autoComplete="email"
 					value={email}
-					onChange={(e) => setEmail(e.target.value)} />
+					onChange={e => setEmail(e.target.value)}
+				/>
 			</CheckoutDetailsInputContainer>
 
 			<CheckoutDetailsInputContainer>
@@ -41,7 +51,8 @@ const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => 
 					placeholder="Country"
 					autoComplete="country-name"
 					value={country}
-					onChange={(e) => setCountry(e.target.value)} />
+					onChange={e => setCountry(e.target.value)}
+				/>
 
 				<Input
 					big={false}
@@ -49,7 +60,8 @@ const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => 
 					placeholder="City"
 					autoComplete="city"
 					value={city}
-					onChange={(e) => setCity(e.target.value)} />
+					onChange={e => setCity(e.target.value)}
+				/>
 			</CheckoutDetailsInputContainer>
 
 			<Input
@@ -58,21 +70,12 @@ const CheckoutDetailsShipping = ({ onClick, onChange, error }: { onClick: () => 
 				placeholder="Address"
 				autoComplete="street-address"
 				value={address}
-				onChange={(e) => setAddress(e.target.value)} />
+				onChange={e => setAddress(e.target.value)}
+			/>
 
-			<Input
-				big={true}
-				type="text"
-				placeholder="Phone"
-				autoComplete="tel"
-				value={phone}
-				onChange={(e) => setPhone(e.target.value)} />
+			<Input big={true} type="text" placeholder="Phone" autoComplete="tel" value={phone} onChange={e => setPhone(e.target.value)} />
 
-			{
-				error !== "" ?
-					<Error> {error} </Error> :
-					null
-			}
+			{error !== "" ? <Error> {error} </Error> : null}
 
 			<Button onClick={() => onClick()}> Continue </Button>
 		</>
